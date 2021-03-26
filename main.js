@@ -14,6 +14,15 @@ function handleFormSubmit(event) {
     console.log(JSON.stringify(formJSON, null, 2));
 
     new QRCode(document.getElementById("qrcode"), JSON.stringify(formJSON));
+
+    let myParams = { 'foo': 'hi there', 'bar': '???' };
+
+    let u = new URLSearchParams(myParams).toString();
+
+    console.log(u);
+
+    var search = location.search.substring(1);
+    JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
 }
 
 const form = document.querySelector('.contact-form');

@@ -4,7 +4,6 @@
   
 .input-icons {
     width: 100%;
-    margin-bottom: 10px;
 }
   
 .icon {
@@ -13,7 +12,5 @@
 }
   
 .input-field {
-    width: 100%;
-    text-indent: 20px;
-    text-align: center;
+    text-indent: 45px;
 }

@@ -25,5 +25,6 @@ function handleFormSubmit(event) {
     JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
 }
 
+
 const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);

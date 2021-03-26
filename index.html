@@ -8,9 +8,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script type="text/javascript" src="stretchy.min.js" async></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="qrcode.min.js" async></script>
+    <script type="text/javascript" src="dom-to-image.js" async></script>
 
 </head>
 
@@ -49,12 +50,12 @@
     <hr>
 
     <h3>
-        Icons inside the input element
+        Fill in the Social Card
     </h3>
 
     <section class="contact-form">
         <div class="input-icons">
-            <form action="#" name="form1">
+            <form action="#" class="form1" name="form1">
                 <i class="fa fa-user icon"></i>
                 <input class="input-field" value="whoami" name="user" type="text" pattern=".{6,30}" title="6 to 20 characters">
                 <i class="fa fa-instagram icon"></i>

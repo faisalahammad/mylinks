@@ -10,13 +10,9 @@ function handleFormSubmit(event) {
     // for multi-selects, we need special handling
     const formJSON = Object.fromEntries(data.entries());
     // const results = document.querySelector('.results pre');
-    console.log(JSON.stringify(formJSON, null, 2));
-
-    new QRCode(document.getElementById("qrcode"), JSON.stringify(formJSON));
-    console.log(formJSON)
-
-    let u = new URLSearchParams(formJSON).toString();
-
+    // console.log(JSON.stringify(formJSON, null, 2));
+    let u = "https://bacloud14.github.io/so-cards/card.html?" + (new URLSearchParams(formJSON).toString());
+    new QRCode(document.getElementById("qrcode"), u);
     console.log(u);
 }
 

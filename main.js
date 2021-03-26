@@ -12,6 +12,8 @@ function handleFormSubmit(event) {
     formJSON.snacks = data.getAll('snacks');
     // const results = document.querySelector('.results pre');
     console.log(JSON.stringify(formJSON, null, 2));
+
+    new QRCode(document.getElementById("qrcode"), JSON.stringify(formJSON));
 }
 
 const form = document.querySelector('.contact-form');

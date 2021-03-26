@@ -11,10 +11,11 @@
     <script src="main.js" async></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="qrcode.min.js" async></script>
+    
 </head>
 
 <body>
-
     <h3>
         Icons inside the input element
     </h3>
@@ -30,12 +31,14 @@
                 <i class="fa fa-youtube icon"></i>
                 <input class="input-field" value="utoob" name="snacks" type="text">
                 <i class="fa fa-facebook icon"></i>
-                <input class="input-field" value="wtf-acebook" type="text">
+                <input class="input-field" value="wtf-acebook" name="snacks" type="text">
 
                 <button type="submit">Save</button>
             </form>
         </div>
     </section>
+
+    <div id="qrcode"></div>
 </body>
 
 </html>

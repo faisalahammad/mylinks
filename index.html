@@ -9,7 +9,8 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script type="text/javascript" src="stretchy.min.js" async></script>
     <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" crossorigin="anonymous"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="qrcode.min.js" async></script>
     <script type="text/javascript" src="dom-to-image.js" async></script>
 
@@ -18,54 +19,64 @@
 <body>
     <h1>Social cards on so.xyz</h1>
 
-    <table id="version-info">
-        <caption>
-            <h3>Disclaimers</h3>
-        </caption>
-        <tbody>
-            <tr>
-                <th scope="row"><img src="https://img.icons8.com/ios/50/000000/safe-browsing.png" /></th>
-                <td id="table-theme">This website do not collection "any" data whatseoever. Try going offline and it
-                    works. If you are a tech savvie
-                    check browser's developer console.</td>
-            </tr>
-            <tr>
-                <th scope="row"><img src="https://img.icons8.com/wired/50/000000/one-free.png" /></th>
-                <td id="table-theme">This website is completely free too. It does not show advertisements and will
-                    not do so in the future. You can
-                    still help me stay motivated by donating.</td>
-            </tr>
-            <tr>
-                <th scope="row"><img src="https://img.icons8.com/wired/50/000000/private2.png" /></th>
-                <td id="table-theme">This website is not encrypted. If you share your QR Code then you
-                    obviously did it. It is still secure as it does not communicate with remote servers.</td>
-            </tr>
-            <tr>
-                <th scope="row"><img src="https://img.icons8.com/wired/50/000000/girl-running.png" /></th>
-                <td id="table-theme">We take no responsibility of social usernames or links you claim is yours. We do no
-                    verification either.</td>
-            </tr>
-        </tbody>
-    </table>
+    <details>
+        <summary>Some details can't hurt!</summary>
+        <table id="version-info">
+            <caption>
+                <h3>Disclaimers</h3>
+            </caption>
+            <tbody>
+                <tr>
+                    <th scope="row"><img src="https://img.icons8.com/ios/50/000000/safe-browsing.png" /></th>
+                    <td id="table-theme">This website do not collection "any" data whatseoever. Try going offline and it
+                        works. If you are a tech savvie
+                        check browser's developer console.</td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="https://img.icons8.com/wired/50/000000/one-free.png" /></th>
+                    <td id="table-theme">This website is completely free too. It does not show advertisements and will
+                        not do so in the future. You can
+                        still help me stay motivated by donating.</td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="https://img.icons8.com/wired/50/000000/private2.png" /></th>
+                    <td id="table-theme">This website is not encrypted. If you share your QR Code then you
+                        obviously did it. It is still secure as it does not communicate with remote servers.</td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="https://img.icons8.com/wired/50/000000/girl-running.png" /></th>
+                    <td id="table-theme">We take no responsibility of social usernames or links you claim is yours. We
+                        do no
+                        verification either.</td>
+                </tr>
+            </tbody>
+        </table>
+    </details>
     <hr>
 
     <h3>
-        Fill in the Social Card
+        Fill in your Social Card
     </h3>
 
     <section class="contact-form">
         <div class="input-icons">
             <form action="#" class="form1" name="form1">
                 <i class="fa fa-user icon"></i>
-                <input class="input-field" value="whoami" name="user" type="text" pattern=".{6,30}" title="6 to 20 characters">
+                <input class="input-field" value="whoami" name="user" type="text" pattern=".{6,30}"
+                    title="6 to 20 characters">
                 <i class="fa fa-instagram icon"></i>
-                <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$" title="6 to 20 characters">
+                <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
+                    title="6 to 20 characters">
                 <i class="fa fa-envelope icon"></i>
-                <input class="input-field" value="gemail" name="envelope" type="text" pattern=".{6,30}|^$" title="6 to 20 characters">
+                <input class="input-field" value="gemail" name="envelope" type="text" pattern=".{6,30}|^$"
+                    title="6 to 20 characters">
                 <i class="fa fa-youtube icon"></i>
-                <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$" title="6 to 20 characters">
+                <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
+                    title="6 to 20 characters">
                 <i class="fa fa-facebook icon"></i>
-                <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$" title="6 to 20 characters">
+                <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
+                    title="6 to 20 characters">
+                <br>
                 <button type="submit" name="submit">Get QR code</button>
             </form>
         </div>
@@ -74,4 +85,5 @@
     <div id="qrcode"></div>
 </body>
 <script type="text/javascript" src="main.js"></script>
+
 </html>

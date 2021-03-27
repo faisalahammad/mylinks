@@ -4,6 +4,7 @@
 //     console.log("Saving value", form.elements.value.value);
 //     event.preventDefault();
 // });
+const domain = "https://bacloud14.github.io/so-cards/card.html?"
 function handleFormSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -11,9 +12,10 @@ function handleFormSubmit(event) {
     const formJSON = Object.fromEntries(data.entries());
     // const results = document.querySelector('.results pre');
     // console.log(JSON.stringify(formJSON, null, 2));
-    let u = "https://bacloud14.github.io/so-cards/card.html?" + (new URLSearchParams(formJSON).toString());
-    new QRCode(document.getElementById("qrcode"), u);
-    console.log(u);
+    const simpleURL = new URLSearchParams(formJSON).toString()
+    const shortestString = domain + Object.values(formJSON).join("|")
+    new QRCode(document.getElementById("qrcode"), shortestString);
+    console.log(shortestString);
 }
 
 

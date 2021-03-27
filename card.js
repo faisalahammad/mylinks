@@ -1,6 +1,7 @@
 var search = atob(location.search.substring(1));
 var vals = search.split(",")
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
+var colors = ["", "#c32aa3;", "#ff0000;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
 // var object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
 const form = document.querySelector('.form1');
 form.insertAdjacentHTML('afterend', generateSvg())
@@ -23,7 +24,9 @@ keys.forEach(function (key, i) {
     var y = document.createElement("INPUT");
     y.setAttribute("class", "input-field");
     y.setAttribute("value", vals[i]);
-    y.setAttribute("disabled", "");
+    y.setAttribute("type", "text");
+    y.setAttribute("style", `background-color: ${colors[i]}`)
+    y.setAttribute("readonly", "readonly");
     form.appendChild(y)
 })
 

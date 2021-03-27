@@ -16,82 +16,90 @@
 </head>
 
 <body>
-    <h1>Social cards on so.xyz</h1>
+    <header>
+        <h1>Social cards on so.xyz</h1>
+    </header>
 
-    <details>
-        <summary>Some details can't hurt!</summary>
-        <table id="version-info">
-            <caption>
-                <h3>Disclaimers</h3>
-            </caption>
-            <tbody>
-                <tr>
-                    <th scope="row"><img src="https://img.icons8.com/ios/50/000000/safe-browsing.png" /></th>
-                    <td id="table-theme"><small>This website do not collect "any" data whatseoever. Try going offline and it
-                        works. If you are a tech savvy
-                        check browser's developer console.</small></td>
-                </tr>
-                <tr>
-                    <th scope="row"><img src="https://img.icons8.com/wired/50/000000/one-free.png" /></th>
-                    <td id="table-theme"><small>It is completely free too. It does not show advertisements and will
-                        not do so in the future. You can
-                        still help me stay motivated by donating.</small></td>
-                </tr>
-                <tr>
-                    <th scope="row"><img src="https://img.icons8.com/wired/50/000000/private2.png" /></th>
-                    <td id="table-theme"><small>It is not encrypted. If you share your QR Code then you
-                        obviously did it. It is still secure as it does not communicate with remote servers.</small></td>
-                </tr>
-                <tr>
-                    <th scope="row"><img src="https://img.icons8.com/wired/50/000000/girl-running.png" /></th>
-                    <td id="table-theme"><small>We take no responsibility of usernames or links you claim is yours. We
-                        do no
-                        verification neither.</small></td>
-                </tr>
-            </tbody>
-        </table>
-    </details>
-    <hr>
+    <main>
+        <details>
+            <summary>Some details can't hurt!</summary>
+            <table id="version-info">
+                <caption>
+                    <h3>Disclaimers</h3>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th scope="row"><img src="https://img.icons8.com/ios/50/000000/safe-browsing.png" /></th>
+                        <td id="table-theme"><small>This website do not collect "any" data whatseoever. Try going
+                                offline and it
+                                works. If you are a tech savvy
+                                check browser's developer console.</small></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><img src="https://img.icons8.com/wired/50/000000/one-free.png" /></th>
+                        <td id="table-theme"><small>It is completely free too. It does not show advertisements and will
+                                not do so in the future. You can
+                                still help me stay motivated by donating.</small></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><img src="https://img.icons8.com/wired/50/000000/private2.png" /></th>
+                        <td id="table-theme"><small>It is not encrypted. If you share your QR Code then you
+                                obviously did it. It is still secure as it does not communicate with remote
+                                servers.</small></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><img src="https://img.icons8.com/wired/50/000000/girl-running.png" /></th>
+                        <td id="table-theme"><small>We take no responsibility of usernames or links you claim is yours.
+                                We
+                                do no
+                                verification neither.</small></td>
+                    </tr>
+                </tbody>
+            </table>
+        </details>
+        <hr>
 
-    <h3>
-        Fill in your Social Card
-    </h3>
+        <h3>
+            Fill in your Social Card
+        </h3>
 
-    <section class="contact-form">
-        <div class="input-icons">
-            <form action="#" class="form1" name="form1">
-                <i class="fa fa-user icon"></i>
-                <input class="input-field" value="whoami" name="user" type="text" pattern=".{6,30}"
-                    title="6 to 20 characters">
-                <i class="fa fa-instagram icon"></i>
-                <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
-                    title="6 to 20 characters">
-                <i class="fa fa-envelope icon"></i>
-                <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$"
-                    title="non conforming email: __@__.__">
-                <i class="fa fa-youtube icon"></i>
-                <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
-                    title="6 to 20 characters">
-                <i class="fa fa-facebook icon"></i>
-                <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
-                    title="6 to 20 characters">
-                <i class="fa fa-phone icon"></i>
-                <input class="input-field" value="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$"
-                    title="non conforming phone number: 10 digits long">
-                <br>
-                <button type="submit" name="submit">Get QR code</button>
-            </form>
-        </div>
-    </section>
-    <hr>
-    <h3>
-        Here you get your QR code
-    </h3>
-    <br>
-    <div id="qrcode"></div>
+        <section class="contact-form">
+            <div class="input-icons">
+                <form action="#" class="form1" name="form1">
+                    <i class="fa fa-user icon"></i>
+                    <input class="input-field" value="whoami" name="user" type="text" pattern=".{6,30}"
+                        title="6 to 20 characters">
+                    <i class="fa fa-instagram icon"></i>
+                    <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
+                        title="6 to 20 characters">
+                    <i class="fa fa-envelope icon"></i>
+                    <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$"
+                        title="non conforming email: __@__.__">
+                    <i class="fa fa-youtube icon"></i>
+                    <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
+                        title="6 to 20 characters">
+                    <i class="fa fa-facebook icon"></i>
+                    <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
+                        title="6 to 20 characters">
+                    <i class="fa fa-phone icon"></i>
+                    <input class="input-field" value="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$"
+                        title="non conforming phone number: 10 digits long">
+                    <br>
+                    <button type="submit" name="submit">Get QR code</button>
+                </form>
+            </div>
+        </section>
+        <hr>
+        <h3>
+            Here you get your QR code
+        </h3>
+        <br>
+        <div id="qrcode"></div>
+    </main>
 
     <footer>
-        If you like my work, you can help me through a donation: <a href='https://www.paypal.com/donate?hosted_button_id=LF4ZVKCQ6GWWW'>Paypal</a> | <a
+        If you like my work 💪 You can help me stay motivated 🍓 : <a
+            href='https://www.paypal.com/donate?hosted_button_id=LF4ZVKCQ6GWWW'>Paypal</a> | <a
             href='https://github.com/bacloud14/so-cards'>Contribute</a>
     </footer>
 </body>

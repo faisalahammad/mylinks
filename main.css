@@ -16,8 +16,8 @@
     text-indent: 45px;
 }
 
-.input-field.disabled:hover {
-    cursor: not-allowed
+.input-field:disabled:hover {
+    cursor: auto;
 }
 
 th {

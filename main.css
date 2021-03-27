@@ -5,6 +5,7 @@
 .input-icons {
     background-color: beige;
     padding: 3rem;
+    position: relative;
 }
 
 .icon {
@@ -31,4 +32,22 @@ th img {
 #qrcode img {
     display: block;
     margin: auto;
+}
+
+.share-btn>a {
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 12px;
+    font-family: Verdana, Arial;
+}
+
+.share-btn>a:hover {
+    cursor: pointer;
+}
+
+#art {
+    float: right;
+    position: absolute;
+    right: 0%;
+    top: 10%;
 }

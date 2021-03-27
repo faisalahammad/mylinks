@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Social cards on so.xyz</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script type="text/javascript" src="stretchy.min.js" async></script>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" crossorigin="anonymous"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="qrcode.min.js" async></script>
-
+    <script type="text/javascript" src="share-buttons.js" async></script>
 </head>
 
 <body>
@@ -72,15 +72,21 @@
                     <i class="fa fa-instagram icon"></i>
                     <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
                         title="6 to 20 characters">
-                    <i class="fa fa-envelope icon"></i>
-                    <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$"
-                        title="non conforming email: __@__.__">
                     <i class="fa fa-youtube icon"></i>
                     <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
                         title="6 to 20 characters">
                     <i class="fa fa-facebook icon"></i>
                     <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
                         title="6 to 20 characters">
+                    <i class="fa fa-twitter icon"></i>
+                    <input class="input-field" value="twatter" name="twitter" type="text" pattern=".{6,30}|^$"
+                        title="6 to 20 characters">
+                    <i class="fa fa-snapchat icon"></i>
+                    <input class="input-field" value="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$"
+                        title="6 to 20 characters">
+                    <i class="fa fa-envelope icon"></i>
+                    <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$"
+                        title="non conforming email: __@__.__">
                     <i class="fa fa-phone icon"></i>
                     <input class="input-field" value="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$"
                         title="non conforming phone number: 10 digits long">
@@ -89,12 +95,29 @@
                 </form>
             </div>
         </section>
+        <br>
         <hr>
         <h3>
             Here you get your QR code
         </h3>
         <br>
         <div id="qrcode"></div>
+
+        <br>
+        <hr>
+        <H3>
+            Help spread so.xyz in your circles 🙂
+        </H3>
+        <div class="share-btn" data-url="https://so.xyz" data-title="Make your social card now!"
+            data-desc="Add your Facebook, Instagram, Twitter, Snapchat, ... All in one card.">
+            <a class="btn-vk" data-id="vk"><i class="fa fa-vk"></i> VK</a>
+            <a class="btn-facebook" data-id="fb"><i class="fa fa-facebook"></i> Facebook</a>
+            <a class="btn-twitter" data-id="tw"><i class="fa fa-twitter"></i> Twitter</a>
+            <a class="btn-telegram" data-id="tg"><i class="fa fa-telegram"></i> Telegram</a>
+            <a class="btn-skype" data-id="sk"><i class="fa fa-skype"></i> Skype</a>
+            <a class="btn-whatsapp" data-id="wa"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+            <a class="btn-mail" data-id="mail"><i class="fa fa-at"></i> EMail</a>
+        </div>
     </main>
 
     <footer>

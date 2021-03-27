@@ -1,7 +1,7 @@
 var search = atob(location.search.substring(1));
 var vals = search.split(",")
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
-var colors = ["", "#c32aa3;", "#ff0000;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
+var colors = ["", "#c32aa3;", "#d71e18;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
 // var object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
 const form = document.querySelector('.form1');
 form.insertAdjacentHTML('afterend', generateSvg())

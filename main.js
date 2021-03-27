@@ -16,6 +16,13 @@ function handleFormSubmit(event) {
     const shortestString = /*domain +*/ Object.values(formJSON).join(",")
     const encodedString = domain + btoa(shortestString)
     new QRCode(document.getElementById("qrcode"), encodedString);
+    var a = document.createElement('a');
+    var linkText = document.createTextNode("My link");
+    a.appendChild(linkText);
+    a.title = "My link";
+    a.href = encodedString;
+    document.querySelector('#link').appendChild(a);
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><code>"+encodedString+"</code>");
     console.log(encodedString);
 }
 

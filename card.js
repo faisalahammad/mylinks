@@ -1,5 +1,5 @@
 var search = location.search.substring(1);
-var vals = search.split("|")
+var vals = search.split(",")
 var keys = ["user", "instagram", "envelope", "youtube", "facebook"]
 // var object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
 const form = document.querySelector('.form1');

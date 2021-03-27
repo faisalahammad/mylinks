@@ -13,7 +13,7 @@ function handleFormSubmit(event) {
     // const results = document.querySelector('.results pre');
     // console.log(JSON.stringify(formJSON, null, 2));
     const simpleURL = new URLSearchParams(formJSON).toString()
-    const shortestString = domain + Object.values(formJSON).join("|")
+    const shortestString = domain + Object.values(formJSON).join(",")
     new QRCode(document.getElementById("qrcode"), shortestString);
     console.log(shortestString);
 }

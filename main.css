@@ -1,16 +1,34 @@
 .input-icons i {
     position: absolute;
 }
-  
+
 .input-icons {
-    width: 100%;
+    background-color: beige;
+    padding: 3rem;
 }
-  
+
 .icon {
     padding: 10px;
     min-width: 40px;
 }
-  
+
 .input-field {
     text-indent: 45px;
+}
+
+.input-field.disabled:hover {
+    cursor: not-allowed
+}
+
+th {
+    width: max-content;
+}
+
+th img {
+    margin-top: 10%
+}
+
+#qrcode img {
+    display: block;
+    margin: auto;
 }

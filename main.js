@@ -4,7 +4,7 @@
 //     console.log("Saving value", form.elements.value.value);
 //     event.preventDefault();
 // });
-const domain = "https://bacloud14.github.io/so-cards/card.html?"
+const domain = "https://so-c.me/card.html?"
 function handleFormSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -16,13 +16,16 @@ function handleFormSubmit(event) {
     const shortestString = /*domain +*/ Object.values(formJSON).join(",")
     const encodedString = domain + btoa(shortestString)
     new QRCode(document.getElementById("qrcode"), encodedString);
+    var canvas = document.getElementById('qrcode').querySelector('canvas');
+    var dataURL = canvas.toDataURL();
     var a = document.createElement('a');
-    var linkText = document.createTextNode("My link");
+    var linkText = document.createTextNode("Share my link");
     a.appendChild(linkText);
     a.title = "My link";
     a.href = encodedString;
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.EXT' href='" + dataURL + "'>Download QR code</a> | ");
     document.querySelector('#link').appendChild(a);
-    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><code>"+encodedString+"</code>");
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><code>" + encodedString + "</code>");
     console.log(encodedString);
 }
 

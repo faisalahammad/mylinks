@@ -34,10 +34,5 @@ const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);
 
 function langChange(el) {
-    console.log('ffffff')
     document.body.setAttribute('lang', el.value);
-}
-
-document.getElementById('fr_lang').onclick = function () {
-    langChange('fr')
 }

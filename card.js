@@ -63,6 +63,9 @@ function generateSvg() {
     return '<div id="art"> <svg width="400" height="400">' + svg + '</svg> </div>';
 }
 
+function langChange(el) {
+    document.body.setAttribute('lang', el.value);
+}
 
 // for (const key in object) {
 //     if (Object.hasOwnProperty.call(object, key)) {

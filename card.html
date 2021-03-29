@@ -16,52 +16,56 @@
     <script type="text/javascript" src="qrcode.min.js" async></script>
 </head>
 
-<body>
+<body lang="en">
+    <select onChange="langChange(this)">
+        <option selected value="en">English</option>
+        <option value="fr">Français</option>
+    </select>
     <header>
-        <h1>Social cards on so-c.me</h1>
+        <h1 lang="en">Social cards on "so-c.me"</h1>
+        <h1 lang="fr">Cartes des médias sociaux sur "so-c.me"</h1>
     </header>
 
     <main>
         <details>
-            <summary>Some details can't hurt!</summary>
+            <summary><span lang="en">Some details can't hurt!</span><span lang="fr">Certains détails ne font pas de mal!</span></summary>
             <table id="version-info">
                 <caption>
-                    <h3>Disclaimers</h3>
+                    <h3 lang="en">Disclaimers</h3>
+                    <h3 lang="fr">Non-responsabilité </h3>
                 </caption>
                 <tbody>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/ios/50/000000/safe-browsing.png" /></th>
-                        <td id="table-theme"><small>This website do not collect "any" data whatseoever. Try going
-                                offline and it
-                                works. If you are a tech savvy
-                                check browser's developer console.</small></td>
+                        <td class="disclaimers" lang="en"><small>This website do not collect "any" data whatsoever. Try going offline and it works. If you are a tech savvy check browser's developer console.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Ce site Web ne collecte «aucune» donnée. Essayez de vous déconnecter et ceci fonctionne. Si vous êtes un(e) geek(ette), vérifiez la console développeur du navigateur. </small></td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/one-free.png" /></th>
-                        <td id="table-theme"><small>It is completely free too. It does not show advertisements and will
-                                not do so in the future. You can
-                                still help me stay motivated by donating.</small></td>
+                        <td class="disclaimers" lang="en"><small>It is completely free too. It does not show advertisements and will not do so in the future. You can still help me stay motivated by donating via Paypal.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Ce site est également 100% gratuit. On n'affiche pas de publicités et ne le fera pas à l'avenir. Vous pouvez toujours m'aider à rester motivé en faisant un don Paypal. </small></td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/private2.png" /></th>
-                        <td id="table-theme"><small>It is not encrypted. If you share your QR Code then you
-                                obviously did it. It is still secure as it does not communicate with remote
-                                servers.</small></td>
+                        <td class="disclaimers" lang="en"><small>It is not encrypted. If you share your QR Code then you obviously did it. It is still secure as it does not communicate with remote servers.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Ce site n'est pas chiffré. Si vous partagez votre QR Code, vous l'avez simplement fait. En revanche Il est sécurisé car il ne communique pas avec des serveurs distants.</small></td>
+
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/girl-running.png" /></th>
-                        <td id="table-theme"><small>We take no responsibility of usernames or links you claim is yours.
-                                We
-                                do no
-                                verification neither.</small></td>
+                        <td class="disclaimers" lang="en"><small>We take no responsibility of usernames or links you claim is yours. We do no verification neither.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Nous déclinons toute responsabilité quant aux noms d'utilisateur ou aux liens que vous prétendez être les vôtres. Nous ne faisons aucune vérification non plus. </small></td>
                     </tr>
                 </tbody>
             </table>
         </details>
         <hr>
 
+        <h3 lang="en">Social Card of that person</h3>
+        <h3 lang="fr">La Carte des réseaux sociaux</h3>
+
         <h3>
-            Social Card of that person
+            
         </h3>
 
         <section class="contact-form">
@@ -73,12 +77,12 @@
         </section>
         <br>
         <hr>
-        <a href='https://so-c.me/'>Make your own card</a>
+        <a href='https://so-c.me/'><span lang="en">Make your own card </span><span lang="fr"> Crée ta propre carte </span></a>
         <br>
         <hr>
-        <H3>
-            Help spread so-c.me in your circles 🙂
-        </H3>
+        <H3 lang="en"> Help spread "so-c.me" in your circles 🙂 </H3>
+        <H3 lang="fr"> Aidez à diffuser "so-c.me" dans vos cercles 🙂 </H3>
+
         <div class="share-btn" data-url="https://so-c.me" data-title="Make your social card now!"
             data-desc="Add your Facebook, Instagram, Twitter, Snapchat, ... All in one card.">
             <a class="btn-vk" data-id="vk"><i class="fa fa-vk"></i> VK</a>
@@ -92,10 +96,12 @@
     </main>
 
     <footer>
-        If you like my work 💪 You can help me stay motivated 🍓 : <a
-            href='https://www.paypal.com/donate?hosted_button_id=LF4ZVKCQ6GWWW'>Paypal</a> 
-            | <a href='mailto:contact@so-c.me'>Email me</a>
-            <!-- | <a href='https://github.com/bacloud14/so-cards'>Contribute</a> -->
+        <span lang="en">If you like my work 💪 You can help me stay motivated 🍓 : </span>
+        <span lang="fr">Si vous aimez mon travail 💪 Vous pouvez m'aider à rester motivé 🍓 : </span>
+        <a
+            href='https://www.paypal.com/donate?hosted_button_id=LF4ZVKCQ6GWWW'>Paypal</a>
+        | <a href='mailto:contact@so-c.me'><span lang="en">Email me</span><span lang="fr">Email</span></a>
+        <!-- | <a href='https://github.com/bacloud14/so-cards'>Contribute</a> -->
     </footer>
 </body>
 <script type="text/javascript" src="card.js"></script>

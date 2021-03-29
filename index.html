@@ -21,7 +21,7 @@
 <body lang="en">
     <select onChange="langChange(this)">
         <option selected value="en">English</option>
-        <option value="fr">French</option>
+        <option value="fr">Français</option>
     </select>
     <header>
         <h1>Social cards on so-c.me</h1>
@@ -29,54 +29,44 @@
     
     <main>
         <details>
-            <summary>Some details can't hurt!</summary>
+            <summary><span lang="en">Some details can't hurt!</span><span lang="fr">Certains détails ne font pas de mal!</span></summary>
             <table id="version-info">
                 <caption>
-                    <h3>Disclaimers</h3>
+                    <h3 lang="en">Disclaimers</h3>
+                    <h3 lang="fr">Non-responsabilité </h3>
                 </caption>
                 <tbody>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/ios/50/000000/safe-browsing.png" /></th>
-                        <td class="disclaimers" lang="en"><small>This website do not collect "any" data whatseoever. Try
-                                going
-                                offline and it
-                                works. If you are a tech savvy
-                                check browser's developer console.</small></td>
-                        <td class="disclaimers" lang="fr"><small>Ce site Web ne recueille aucune donnée. Essayez d'y
-                                aller hors ligne et ça travaux.
-                                Si vous êtes un féru de technologie consultez la console développeur du
-                                navigateur.</small></td>
+                        <td class="disclaimers" lang="en"><small>This website do not collect "any" data whatsoever. Try going offline and it works. If you are a tech savvy check browser's developer console.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Ce site Web ne collecte «aucune» donnée. Essayez de vous déconnecter et cela fonctionne. Si vous êtes un expert en technologie, vérifiez la console de développement du navigateur. </small></td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/one-free.png" /></th>
-                        <td class="disclaimers"><small>It is completely free too. It does not show advertisements and
-                                will
-                                not do so in the future. You can
-                                still help me stay motivated by donating.</small></td>
+                        <td class="disclaimers" lang="en"><small>It is completely free too. It does not show advertisements and will not do so in the future. You can still help me stay motivated by donating.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Il est également totalement gratuit. Il n'affiche pas de publicités et ne le fera pas à l'avenir. Vous pouvez toujours m'aider à rester motivé en faisant un don. </small></td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/private2.png" /></th>
-                        <td class="disclaimers"><small>It is not encrypted. If you share your QR Code then you
-                                obviously did it. It is still secure as it does not communicate with remote
-                                servers.</small></td>
+                        <td class="disclaimers" lang="en"><small>It is not encrypted. If you share your QR Code then you obviously did it. It is still secure as it does not communicate with remote servers.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Il n'est pas chiffré. Si vous partagez votre QR Code, vous l'avez évidemment fait. Il est toujours sécurisé car il ne communique pas avec les serveurs distants.</small></td>
+
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/girl-running.png" /></th>
-                        <td class="disclaimers"><small>We take no responsibility of usernames or links you claim is
-                                yours.
-                                We
-                                do no
-                                verification neither.</small></td>
+                        <td class="disclaimers" lang="en"><small>We take no responsibility of usernames or links you claim is yours. We do no verification neither.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Nous déclinons toute responsabilité quant aux noms d'utilisateur ou aux liens que vous prétendez être les vôtres. Nous ne faisons aucune vérification non plus. </small></td>
                     </tr>
                 </tbody>
             </table>
         </details>
         <hr>
 
-        <h3>
-            Fill in your Social Card
-        </h3>
-        <p><small> All are optional except "Who are you" </small></p>
+        <h3 lang="en">Fill in your Social Card</h3>
+        <h3 lang="fr">Remplissez votre carte sociale</h3>
+
+        <p lang="en"><small> All are optional except "alias" </small></p>
+        <p lang="fr"><small> Tous sont facultatifs sauf "le surnom" </small></p>
         <section class="contact-form">
             <div class="input-icons">
                 <form action="#" class="form1" name="form1">
@@ -111,19 +101,19 @@
         </section>
         <br>
         <hr>
-        <h3>
-            Here you get your QR code and link.
-        </h3>
-        <p><small> Just share it with friends! On phones, you can <i>long press</i> on it then share. </small></p>
+        <h3 lang="en">Here you get your QR code and link.</h3>
+        <h3 lang="fr">Ici, vous obtenez votre code QR et votre lien.</h3>
+        <p lang="en"><small> Just share it with friends! On phones, you can <i>long press</i> on it then share. </small></p>
+        <p lang="fr"><small> Partagez-le simplement avec vos amis! Sur les téléphones, vous pouvez <i> appuyer longuement </i> dessus puis partager.  </small></p>
         <br>
         <div id="qrcode"></div>
-        <p><small> Or share the generated link </small></p>
+        <p lang="en"><small> Or share the generated link </small></p>
+        <p lang="fr"><small> Ou partagez le lien généré </small></p>
         <div id="link"></div>
         <br>
         <hr>
-        <H3>
-            Help spread so-c.me in your circles 🙂
-        </H3>
+        <H3 lang="en"> Help spread so-c.me in your circles 🙂 </H3>
+        <H3 lang="fr"> Aidez à diffuser so-c.me dans vos cercles 🙂 </H3>
         <div class="share-btn" data-url="https://so-c.me" data-title="Make your social card now!"
             data-desc="Add your Facebook, Instagram, Twitter, Snapchat, ... All in one card.">
             <a class="btn-vk" data-id="vk"><i class="fa fa-vk"></i> VK</a>
@@ -137,7 +127,9 @@
     </main>
 
     <footer>
-        If you like my work 💪 You can help me stay motivated 🍓 : <a
+        <span lang="en">If you like my work 💪 You can help me stay motivated 🍓 : </span>
+        <span lang="fr">Si vous aimez mon travail 💪 Vous pouvez m'aider à rester motivé 🍓 : </span>
+        <a
             href='https://www.paypal.com/donate?hosted_button_id=LF4ZVKCQ6GWWW'>Paypal</a>
         | <a href='mailto:contact@so-c.me'>Email me</a>
         <!-- | <a href='https://github.com/bacloud14/so-cards'>Contribute</a> -->

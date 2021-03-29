@@ -1,3 +1,8 @@
+body[lang="en"] [lang="fr"],
+body[lang="fr"] [lang="en"]{
+  display: none;
+}
+
 .input-icons i {
     position: absolute;
 }
@@ -6,6 +11,7 @@
     /* background-color: rgb(243, 243, 224); */
     padding: 3rem;
     position: relative;
+    background-color: rgba(245, 245, 220, 0.726);
 }
 
 .icon {
@@ -21,7 +27,6 @@
     cursor: auto;
 }
 
-
 th {
     width: max-content;
 }
@@ -34,7 +39,6 @@ th img {
     display: block;
     margin: auto;
 }
-
 
 .share-btn>a {
     border: 1px solid #ccc;
@@ -53,3 +57,8 @@ th img {
     right: 0%;
     top: 10%;
 }
+
+select {
+    width: auto !important;
+    float: right;
+  }

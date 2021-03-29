@@ -7,6 +7,7 @@
     <meta name="keywords" content="social, media, contacts, snapchat, whatsapp, twitter, facebook">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <title>Social cards on so-c.me</title>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script type="text/javascript" src="stretchy.min.js" async></script>
@@ -17,11 +18,15 @@
     <script type="text/javascript" src="share-buttons.js" async></script>
 </head>
 
-<body>
+<body lang="en">
+    <select onChange="langChange(this)">
+        <option selected value="en">English</option>
+        <option value="fr">French</option>
+    </select>
     <header>
         <h1>Social cards on so-c.me</h1>
     </header>
-
+    
     <main>
         <details>
             <summary>Some details can't hurt!</summary>
@@ -32,26 +37,33 @@
                 <tbody>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/ios/50/000000/safe-browsing.png" /></th>
-                        <td id="table-theme"><small>This website do not collect "any" data whatseoever. Try going
+                        <td class="disclaimers" lang="en"><small>This website do not collect "any" data whatseoever. Try
+                                going
                                 offline and it
                                 works. If you are a tech savvy
                                 check browser's developer console.</small></td>
+                        <td class="disclaimers" lang="fr"><small>Ce site Web ne recueille aucune donnée. Essayez d'y
+                                aller hors ligne et ça travaux.
+                                Si vous êtes un féru de technologie consultez la console développeur du
+                                navigateur.</small></td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/one-free.png" /></th>
-                        <td id="table-theme"><small>It is completely free too. It does not show advertisements and will
+                        <td class="disclaimers"><small>It is completely free too. It does not show advertisements and
+                                will
                                 not do so in the future. You can
                                 still help me stay motivated by donating.</small></td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/private2.png" /></th>
-                        <td id="table-theme"><small>It is not encrypted. If you share your QR Code then you
+                        <td class="disclaimers"><small>It is not encrypted. If you share your QR Code then you
                                 obviously did it. It is still secure as it does not communicate with remote
                                 servers.</small></td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://img.icons8.com/wired/50/000000/girl-running.png" /></th>
-                        <td id="table-theme"><small>We take no responsibility of usernames or links you claim is yours.
+                        <td class="disclaimers"><small>We take no responsibility of usernames or links you claim is
+                                yours.
                                 We
                                 do no
                                 verification neither.</small></td>
@@ -72,26 +84,26 @@
                     <input class="input-field" value="my-alias" name="user" type="text" pattern=".{6,30}" style=""
                         title="6 to 20 characters">
                     <i class="fa fa-instagram icon"></i>
-                    <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$" style="background-color: #c32aa3;"
-                        title="6 to 20 characters">
+                    <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
+                        style="background-color: #c32aa3;" title="6 to 20 characters">
                     <i class="fa fa-youtube icon"></i>
-                    <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$" style="background-color: #d71e18;"
-                        title="6 to 20 characters">
+                    <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
+                        style="background-color: #d71e18;" title="6 to 20 characters">
                     <i class="fa fa-facebook icon"></i>
-                    <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$" style="background-color: #1877f2;"
-                        title="6 to 20 characters">
+                    <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
+                        style="background-color: #1877f2;" title="6 to 20 characters">
                     <i class="fa fa-twitter icon"></i>
-                    <input class="input-field" value="twatter" name="twitter" type="text" pattern=".{6,30}|^$" style="background-color: #1da1f2;"
-                        title="6 to 20 characters">
+                    <input class="input-field" value="twatter" name="twitter" type="text" pattern=".{6,30}|^$"
+                        style="background-color: #1da1f2;" title="6 to 20 characters">
                     <i class="fa fa-snapchat icon"></i>
-                    <input class="input-field" value="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$" style="background-color: #fffc00;"
-                        title="6 to 20 characters">
+                    <input class="input-field" value="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$"
+                        style="background-color: #fffc00;" title="6 to 20 characters">
                     <i class="fa fa-envelope icon"></i>
                     <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$" style=""
                         title="non conforming email: __@__.__">
                     <i class="fa fa-phone icon"></i>
-                    <input class="input-field" value="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$" style=""
-                        title="non conforming phone number: 10 digits long">
+                    <input class="input-field" value="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$"
+                        style="" title="non conforming phone number: 10 digits long">
                     <br>
                     <button type="submit" name="submit">Get QR code</button>
                 </form>
@@ -100,7 +112,7 @@
         <br>
         <hr>
         <h3>
-            Here you get your QR code and link. 
+            Here you get your QR code and link.
         </h3>
         <p><small> Just share it with friends! On phones, you can <i>long press</i> on it then share. </small></p>
         <br>
@@ -126,8 +138,9 @@
 
     <footer>
         If you like my work 💪 You can help me stay motivated 🍓 : <a
-            href='https://www.paypal.com/donate?hosted_button_id=LF4ZVKCQ6GWWW'>Paypal</a> | <a
-            href='https://github.com/bacloud14/so-cards'>Contribute</a>
+            href='https://www.paypal.com/donate?hosted_button_id=LF4ZVKCQ6GWWW'>Paypal</a>
+        | <a href='mailto:contact@so-c.me'>Email me</a>
+        <!-- | <a href='https://github.com/bacloud14/so-cards'>Contribute</a> -->
     </footer>
 </body>
 <script type="text/javascript" src="main.js"></script>

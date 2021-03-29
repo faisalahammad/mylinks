@@ -23,7 +23,7 @@ function handleFormSubmit(event) {
     a.appendChild(linkText);
     a.title = "My link";
     a.href = encodedString;
-    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.EXT' href='" + dataURL + "'>Download QR code</a> | ");
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.png' href='" + dataURL + "'>Download QR code</a> | ");
     document.querySelector('#link').appendChild(a);
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><code>" + encodedString + "</code>");
     console.log(encodedString);
@@ -32,3 +32,12 @@ function handleFormSubmit(event) {
 
 const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);
+
+function langChange(el) {
+    console.log('ffffff')
+    document.body.setAttribute('lang', el.value);
+}
+
+document.getElementById('fr_lang').onclick = function () {
+    langChange('fr')
+}

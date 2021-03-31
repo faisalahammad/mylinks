@@ -1,7 +1,20 @@
-body[lang="en"] [lang="fr"],
-body[lang="fr"] [lang="en"]{
-  display: none;
+body[lang="en"] [lang="fr"], body[lang="fr"] [lang="en"] {
+    display: none;
 }
+
+body[lang="en"] [lang="ar"], body[lang="ar"] [lang="en"] {
+    display: none;
+}
+
+body[lang="fr"] [lang="ar"], body[lang="ar"] [lang="fr"] {
+    display: none;
+}
+
+td[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
 
 .input-icons i {
     position: absolute;
@@ -61,4 +74,4 @@ th img {
 select {
     width: auto !important;
     float: right;
-  }
+}

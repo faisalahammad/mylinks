@@ -16,11 +16,11 @@ keys.forEach(function (key, i) {
     if (!vals[i])
         return
     if (key === "envelope") {
-        form.insertAdjacentHTML('afterend', `<a href="mailto:${vals[i]}">${vals[i]}</a><br>`)
+        form.insertAdjacentHTML('afterend', `&nbsp;<a href="mailto:${vals[i]}">${vals[i]}</a><br>`)
         return
     }
     if (key === "phone") {
-        form.insertAdjacentHTML('afterend', `<a href="tel:${vals[i]}">${vals[i]}</a><br>`)
+        form.insertAdjacentHTML('afterend', `<br>&nbsp;<a href="tel:${vals[i]}">${vals[i]}</a><br>`)
         return
     }
     var x = document.createElement("I");

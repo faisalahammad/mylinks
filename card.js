@@ -23,7 +23,7 @@ var version
 // and extracts values based on that version
 function reverse(url) {
     // Get and Substract version
-    version = parseInt(url.split('|')[1])
+    version = parseInt(url.charAt(url.length - 1))
     url = url.substring(0, url.length - 2)
     // Implement incremental versions
     var url_

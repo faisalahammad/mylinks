@@ -27,7 +27,7 @@ function codify(formJSON) {
             return domain + btoa(shortestString) + `|${version}`   // version 0 
         case 1:
             shortestString = /*domain +*/ Object.values(formJSON).join(",")
-            return domain + btoaVerified(shortestString) + `|${version}`   // version 0 
+            return domain + btoaVerified(shortestString) + `%${version}`   // version 0 
         default:
             break;
     }

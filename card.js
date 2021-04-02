@@ -68,6 +68,9 @@ keys.forEach(function (key, i) {
             form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a href="tel:${vals[i]}">${vals[i]}</a><br>`)
             return
         }
+        if (key === "user") {
+            document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] })
+        }
         var x = document.createElement("I");
         x.setAttribute("class", `fa fa-${key} icon`);
         form.appendChild(x)

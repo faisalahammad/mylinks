@@ -1,14 +1,33 @@
+String.prototype.hashCode = function () {
+    var hash = 0, i, chr;
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+        chr = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return "" + hash;
+};
+
+// A verified version of btoa
+function btoaVerified(s) {
+    return btoa(s) + "@" + btoa(s).hashCode()
+}
+
 const domain = "https://so-c.me/card.html?"
 
-const version = 0
+const version = 1
+var shortestString
 // When necessary create a new implementation for URL codification.
 // Anyway, it must be of form /card.html?{.*}|/d
 function codify(formJSON) {
     switch (version) {
         case 0:
-            const shortestString = /*domain +*/ Object.values(formJSON).join(",")
+            shortestString = /*domain +*/ Object.values(formJSON).join(",")
             return domain + btoa(shortestString) + `|${version}`   // version 0 
-        // case 1: TODO
+        case 1:
+            shortestString = /*domain +*/ Object.values(formJSON).join(",")
+            return domain + btoaVerified(shortestString) + `|${version}`   // version 0 
         default:
             break;
     }

@@ -51,7 +51,7 @@ function handleFormSubmit(event) {
     a.href = encodedString;
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.png' href='" + dataURL + "'>Download QR code</a> | ");
     document.querySelector('#link').appendChild(a);
-    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><code>" + encodedString + "</code>");
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
     console.log(encodedString);
 }
 // Attach handleFormSubmit
@@ -61,4 +61,13 @@ form.addEventListener('submit', handleFormSubmit);
 // Language selector.
 function langChange(el) {
     document.body.setAttribute('lang', el.value);
+}
+
+function copyLink() {
+    /* Get the text field */
+    var copyText = document.getElementById("to_copy");
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    document.execCommand("copy");
 }

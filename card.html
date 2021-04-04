@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <meta   http-equiv="Content-Security-Policy" 
-            content="default-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://0.peerjs.com wss://0.peerjs.com; 
-            script-src 'self' 'unsafe-inline' https://unpkg.com; 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://0.peerjs.com wss://0.peerjs.com https://demo.httprelay.io; 
+            script-src 'self' 'unsafe-inline' https://unpkg.com https://ajax.googleapis.com; 
             object-src 'self'; 
             img-src 'self' data: https://img.icons8.com https://cdnjs.cloudflare.com; 
             child-src 'none';">
+
 
     <meta charset='utf-8'>
     <meta name="description" content="Share your social contacts in one card. We do not collect any data whatseoever.">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" type='text/css' href="water.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="qrcode.min.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -27,7 +28,7 @@
     <div id="particles-js" style="position:fixed;width:100%;z-index:-10;"></div>
     <script src="particles.min.js"></script>
     <script src="particles.app.js"></script>
-    
+
     <select onChange="langChange(this)">
         <option selected value="en">English</option>
         <option value="fr">Français</option>
@@ -41,7 +42,8 @@
 
     <main>
         <details>
-            <summary><span lang="en">Some details can't hurt!</span><span lang="fr">Certains détails ne font pas de mal!</span><span lang="ar" dir="rtl">بعض التفاصيل</span></summary>
+            <summary><span lang="en">Some details can't hurt!</span><span lang="fr">Certains détails ne font pas de
+                    mal!</span><span lang="ar" dir="rtl">بعض التفاصيل</span></summary>
             <table id="version-info">
                 <caption>
                     <h3 lang="en">Disclaimers</h3>
@@ -102,8 +104,10 @@
         <hr>
 
         <h3 lang="en">Social Card of <span style="color:rgb(195, 0, 255);font-weight:bold" class="user"></span></h3>
-        <h3 lang="fr">La Carte des réseaux sociaux de <span style="color:rgb(195, 0, 255);font-weight:bold" class="user"></span></h3>
-        <h3 lang="ar" dir="rtl">البطاقة الاجتماعية ل <span style="color:rgb(195, 0, 255);font-weight:bold" class="user"></span></h3>
+        <h3 lang="fr">La Carte des réseaux sociaux de <span style="color:rgb(195, 0, 255);font-weight:bold"
+                class="user"></span></h3>
+        <h3 lang="ar" dir="rtl">البطاقة الاجتماعية ل <span style="color:rgb(195, 0, 255);font-weight:bold"
+                class="user"></span></h3>
 
         <h3>
 
@@ -147,7 +151,97 @@
                 lang="ar">بريد إلكتروني</span></a>
         <!-- | <a href='https://github.com/bacloud14/so-cards'>Contribute</a> -->
     </footer>
+    <script type="text/javascript" src="card.js"></script>
+    <!-- <script type="text/javascript" src="peerjs.min.js"></script>
+    <script>
+        (function () {
+
+            var lastPeerId = null;
+            var peer = null; // own peer object
+            var conn = null;
+
+            /**
+             * Create the Peer object for our end of the connection.
+             *
+             * Sets up callbacks that handle any events related to our
+             * peer object.
+             */
+            function initialize() {
+                // Create own peer object with connection to shared PeerJS server
+                peer = new Peer(null, {
+                    debug: 2
+                });
+
+                peer.on('open', function (id) {
+                    // Workaround for peer.reconnect deleting previous id
+                    if (peer.id === null) {
+                        console.log('Received null id from peer open');
+                        peer.id = lastPeerId;
+                    } else {
+                        lastPeerId = peer.id;
+                    }
+
+                    console.log('ID: ' + peer.id);
+                });
+                peer.on('connection', function (c) {
+                    // Disallow incoming connections
+                    c.on('open', function () {
+                        c.send("Sender does not accept incoming connections");
+                        setTimeout(function () { c.close(); }, 500);
+                    });
+                });
+                peer.on('disconnected', function () {
+
+                    console.log('Connection lost. Please reconnect');
+
+                    // Workaround for peer.reconnect deleting previous id
+                    peer.id = lastPeerId;
+                    peer._lastServerId = lastPeerId;
+                    peer.reconnect();
+                });
+                peer.on('close', function () {
+                    conn = null;
+                    console.log('Connection destroyed');
+                });
+                peer.on('error', function (err) {
+                    console.log(err);
+                });
+            };
+
+            /**
+             * Create the connection between the two Peers.
+             *
+             * Sets up callbacks that handle any events related to the
+             * connection and data received on it.
+             */
+            function join() {
+                // Close old connection
+                if (conn) {
+                    conn.close();
+                }
+
+                // Create connection to destination peer specified in the input field
+                conn = peer.connect(_id, {
+                    reliable: true
+                });
+
+                conn.on('open', function () {
+                    console.log("Connected to: " + conn.peer);
+                    conn.send("command");
+                });
+                // Handle incoming data (messages only since this is the signal sender)
+                conn.on('data', function (data) {
+                    console.log(data);
+                });
+                conn.on('close', function () {
+                    console.log("Connection closed");
+                });
+            };
+            // Since all our callbacks are setup, start the process of obtaining an ID
+            initialize();
+            setTimeout(function () { join(); }, 1000)
+        })();
+    </script> -->
 </body>
-<script type="text/javascript" src="card.js"></script>
 
 </html>

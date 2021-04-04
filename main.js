@@ -27,7 +27,7 @@ function codify(formJSON) {
             return domain + btoa(shortestString) + `|${version}`   // version 0 
         case 1:
             shortestString = /*domain +*/ Object.values(formJSON).join(",")
-            return domain + btoaVerified(shortestString) + `%${version}`    // version 0 
+            return domain + btoaVerified(shortestString) + `%${version}`    // version 1 
         default:
             break;
     }
@@ -61,6 +61,11 @@ function handleDom() {
     // for multi-selects, we need special handling
     const formJSON = Object.fromEntries(formData.entries());
     const encodedString = codify(formJSON)
+    _id = (Math.random().toString(36).substr(4))
+    mcastUrl = "https://demo.httprelay.io/mcast/" + _id
+    const hotLink = encodedString + '===' + _id
+    console.log(hotLink)
+
     // const simpleURL = new URLSearchParams(formJSON).toString()
     new QRCode(document.getElementById("qrcode"), encodedString);
     var canvas = document.getElementById('qrcode').querySelector('canvas');
@@ -83,3 +88,18 @@ function differForConn() {
             handleDom()
         }, 1000);
 }
+var _id;
+var mcastUrl;
+
+$.ajaxSetup({ xhrFields: { withCredentials: true } });	// For cookies with SeqId
+
+var receive = function () {
+    $.get(mcastUrl)
+        .done(function (data) {
+            console.log(data);
+        }).always(function () {
+            receive();
+        })
+}
+
+receive();

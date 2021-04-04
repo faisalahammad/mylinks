@@ -2,13 +2,12 @@
 <html>
 
 <head>
-    <meta   http-equiv="Content-Security-Policy" 
-            content="default-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://0.peerjs.com wss://0.peerjs.com; 
-            script-src 'self' 'unsafe-inline' https://unpkg.com; 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://0.peerjs.com wss://0.peerjs.com https://demo.httprelay.io; 
+            script-src 'self' 'unsafe-inline' https://unpkg.com https://ajax.googleapis.com; 
             object-src 'self'; 
             img-src 'self' data: https://img.icons8.com https://cdnjs.cloudflare.com; 
             child-src 'none';">
-    
+
     <meta charset='utf-8'>
     <meta name="description" content="Share your social contacts in one card. We do not collect any data whatseoever.">
     <meta name="keywords" content="social, media, contacts, snapchat, whatsapp, twitter, facebook">
@@ -23,7 +22,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="qrcode.min.js" async></script>
     <script type="text/javascript" src="share-buttons.js" async></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body lang="en">
@@ -186,7 +185,88 @@
                 dir="rtl">بريد إلكتروني</span></a>
         <!-- | <a href='https://github.com/bacloud14/so-cards'>Contribute</a> -->
     </footer>
+
 </body>
 <script type="text/javascript" src="main.js"></script>
+<!-- <script type="text/javascript" src="peerjs.min.js"></script>
+<script>
+    (function () {
+
+        var lastPeerId = null;
+        var peer = null; // Own peer object
+        var conn = null;
+
+        /**
+         * Create the Peer object for our end of the connection.
+         *
+         * Sets up callbacks that handle any events related to our
+         * peer object.
+         */
+        function initialize() {
+            // Create own peer object with connection to shared PeerJS server
+            peer = new Peer(null, {
+                debug: 2
+            });
+
+            peer.on('open', function (id) {
+                // Workaround for peer.reconnect deleting previous id
+                if (peer.id === null) {
+                    console.log('Received null id from peer open');
+                    peer.id = lastPeerId;
+                } else {
+                    lastPeerId = peer.id;
+                }
+
+                console.log('ID: ' + peer.id);
+            });
+            peer.on('connection', function (c) {
+                // Allow only a single connection
+                if (conn && conn.open) {
+                    c.on('open', function () {
+                        c.send("Already connected to another client");
+                        setTimeout(function () { c.close(); }, 500);
+                    });
+                    return;
+                }
+
+                conn = c;
+                console.log("Connected to: " + conn.peer);
+                ready();
+            });
+            peer.on('disconnected', function () {
+                console.log('Connection lost. Please reconnect');
+
+                // Workaround for peer.reconnect deleting previous id
+                peer.id = lastPeerId;
+                peer._lastServerId = lastPeerId;
+                peer.reconnect();
+            });
+            peer.on('close', function () {
+                conn = null;
+                console.log('Connection destroyed');
+            });
+            peer.on('error', function (err) {
+                console.log(err);
+                alert('' + err);
+            });
+        };
+
+        /**
+         * Triggered once a connection has been achieved.
+         * Defines callbacks to handle incoming data and connection events.
+         */
+        function ready() {
+            conn.on('data', function (data) {
+                console.log("Data recieved");
+                console.log(data)
+            });
+            conn.on('close', function () {
+                conn = null;
+            });
+        }
+        
+        initialize();
+    })();
+</script> -->
 
 </html>

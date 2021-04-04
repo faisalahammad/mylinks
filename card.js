@@ -18,11 +18,16 @@ function atobVerified(s) {
         return ""
 }
 
+
+
 var version
+
 // Gets URL encoding version 
 // and extracts values based on that version
 function reverse(url) {
     // Get and Substract version
+    [url, _id] = url.split('===')
+    mcastUrl = "https://demo.httprelay.io/mcast/" + _id
     version = parseInt(url.charAt(url.length - 1))
     url = url.substring(0, url.length - 2)
     // Implement incremental versions
@@ -136,3 +141,8 @@ function generateSvg() {
 function langChange(el) {
     document.body.setAttribute('lang', el.value);
 }
+
+var _id;
+var mcastUrl;
+$.ajaxSetup({ xhrFields: { withCredentials: true } });	// For cookies with SeqId
+$.post(mcastUrl, "holla");

@@ -27,32 +27,17 @@ function codify(formJSON) {
             return domain + btoa(shortestString) + `|${version}`   // version 0 
         case 1:
             shortestString = /*domain +*/ Object.values(formJSON).join(",")
-            return domain + btoaVerified(shortestString) + `%${version}`   // version 0 
+            return domain + btoaVerified(shortestString) + `%${version}` + `====${id_}`   // version 0 
         default:
             break;
     }
 }
-
+var formData
 // Manipulate dom on form submit
 function handleFormSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
-    // for multi-selects, we need special handling
-    const formJSON = Object.fromEntries(data.entries());
-    const encodedString = codify(formJSON)
-    // const simpleURL = new URLSearchParams(formJSON).toString()
-    new QRCode(document.getElementById("qrcode"), encodedString);
-    var canvas = document.getElementById('qrcode').querySelector('canvas');
-    var dataURL = canvas.toDataURL();
-    var a = document.createElement('a');
-    var linkText = document.createTextNode("Share my link");
-    a.appendChild(linkText);
-    a.title = "My link";
-    a.href = encodedString;
-    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.png' href='" + dataURL + "'>Download QR code</a> | ");
-    document.querySelector('#link').appendChild(a);
-    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
-    console.log(encodedString);
+    formData = new FormData(event.target);
+    differForConn()
 }
 // Attach handleFormSubmit
 const form = document.querySelector('.contact-form');
@@ -70,4 +55,60 @@ function copyLink() {
     copyText.select();
     copyText.setSelectionRange(0, 99999); /* For mobile devices */
     document.execCommand("copy");
+}
+var peer = null;
+var id_;
+
+function handleDom() {
+    // for multi-selects, we need special handling
+    const formJSON = Object.fromEntries(formData.entries());
+    const encodedString = codify(formJSON)
+    // const simpleURL = new URLSearchParams(formJSON).toString()
+    new QRCode(document.getElementById("qrcode"), encodedString);
+    var canvas = document.getElementById('qrcode').querySelector('canvas');
+    var dataURL = canvas.toDataURL();
+    var a = document.createElement('a');
+    var linkText = document.createTextNode("Share my link");
+    a.appendChild(linkText);
+    a.title = "My link";
+    a.href = encodedString;
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.png' href='" + dataURL + "'>Download QR code</a> | ");
+    document.querySelector('#link').appendChild(a);
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
+    console.log(encodedString);
+}
+
+
+function differForConn() {
+    peer = new Peer();
+    setTimeout(
+        function () {
+            id_ = peer._id;
+            peer.on('open', function (id) {
+                if (peer.id === null) {
+                    console.log('Received null id from peer open');
+                }
+                console.log('ID: ' + peer.id);
+            });
+            peer.on('connection', function (conn) {
+                conn.on('data', function (data) {
+                    // Will print 'hi!'
+                    console.log(data);
+                });
+            });
+            peer.on('disconnected', function () {
+                console.log('Connection lost. Please reconnect');
+                peer.reconnect();
+            });
+            peer.on('close', function () {
+                conn = null;
+                console.log('Connection destroyed');
+            });
+            peer.on('error', function (err) {
+                console.log(err);
+                alert('' + err);
+            });
+            handleDom()
+        }, 2000);
+
 }

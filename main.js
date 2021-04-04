@@ -27,7 +27,7 @@ function codify(formJSON) {
             return domain + btoa(shortestString) + `|${version}`   // version 0 
         case 1:
             shortestString = /*domain +*/ Object.values(formJSON).join(",")
-            return domain + btoaVerified(shortestString) + `%${version}` + `====${id_}`   // version 0 
+            return domain + btoaVerified(shortestString) + `%${version}`    // version 0 
         default:
             break;
     }
@@ -56,8 +56,6 @@ function copyLink() {
     copyText.setSelectionRange(0, 99999); /* For mobile devices */
     document.execCommand("copy");
 }
-var peer = null;
-var id_;
 
 function handleDom() {
     // for multi-selects, we need special handling
@@ -80,35 +78,8 @@ function handleDom() {
 
 
 function differForConn() {
-    peer = new Peer();
     setTimeout(
         function () {
-            id_ = peer._id;
-            peer.on('open', function (id) {
-                if (peer.id === null) {
-                    console.log('Received null id from peer open');
-                }
-                console.log('ID: ' + peer.id);
-            });
-            peer.on('connection', function (conn) {
-                conn.on('data', function (data) {
-                    // Will print 'hi!'
-                    console.log(data);
-                });
-            });
-            peer.on('disconnected', function () {
-                console.log('Connection lost. Please reconnect');
-                peer.reconnect();
-            });
-            peer.on('close', function () {
-                conn = null;
-                console.log('Connection destroyed');
-            });
-            peer.on('error', function (err) {
-                console.log(err);
-                alert('' + err);
-            });
             handleDom()
-        }, 2000);
-
+        }, 1000);
 }

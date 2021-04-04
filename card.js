@@ -1,6 +1,3 @@
-var id_;
-var peer = new Peer();
-
 String.prototype.hashCode = function () {
     var hash = 0, i, chr;
     if (this.length === 0) return hash;
@@ -22,19 +19,9 @@ function atobVerified(s) {
 }
 
 var version
-var conn = null
 // Gets URL encoding version 
 // and extracts values based on that version
 function reverse(url) {
-    id_ = url.split('====')[1]
-    url = url.split('====')[0]
-    if (!conn)
-        conn = peer.connect(id_);
-    // on open will be launch when you successfully connect to PeerServer
-    conn.on('open', function () {
-        // here you have conn.id
-        setTimeout(function () { conn.send('hiyooooooooooo!'); }, 1000)
-    });
     // Get and Substract version
     version = parseInt(url.charAt(url.length - 1))
     url = url.substring(0, url.length - 2)
@@ -149,34 +136,3 @@ function generateSvg() {
 function langChange(el) {
     document.body.setAttribute('lang', el.value);
 }
-
-
-peer.on('open', function (id) {
-    // Workaround for peer.reconnect deleting previous id
-    if (peer.id === null) {
-        console.log('Received null id from peer open');
-    }
-
-    console.log('ID: ' + peer.id);
-});
-peer.on('connection', function (c) {
-    // Disallow incoming connections
-    c.on('open', function () {
-        c.send("Sender does not accept incoming connections");
-        setTimeout(function () { c.close(); }, 500);
-    });
-});
-
-peer.on('disconnected', function () {
-    console.log('Connection lost. Please reconnect');
-    peer.reconnect();
-});
-
-peer.on('close', function () {
-    conn = null;
-    console.log('Connection destroyed');
-});
-
-peer.on('error', function (err) {
-    console.log(err);
-});

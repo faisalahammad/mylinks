@@ -62,9 +62,9 @@ function handleDom() {
     const formJSON = Object.fromEntries(formData.entries());
     const encodedString = codify(formJSON)
     _id = (Math.random().toString(36).substr(4))
-    mcastUrl = "https://demo.httprelay.io/mcast/" + _id
-    const hotLink = encodedString + '===' + _id
-    console.log(hotLink)
+    // mcastUrl = "https://demo.httprelay.io/mcast/" + _id
+    // const hotLink = encodedString + '===' + _id
+    // console.log(hotLink)
 
     // const simpleURL = new URLSearchParams(formJSON).toString()
     new QRCode(document.getElementById("qrcode"), encodedString);
@@ -85,21 +85,48 @@ function handleDom() {
 function differForConn() {
     setTimeout(
         function () {
-            handleDom()
+            handleDom();
+            // subscribe();
         }, 1000);
 }
 var _id;
 var mcastUrl;
 
-$.ajaxSetup({ xhrFields: { withCredentials: true } });	// For cookies with SeqId
+// $.ajaxSetup({ xhrFields: { withCredentials: true } });	// For cookies with SeqId
 
-var receive = function () {
-    $.get(mcastUrl)
-        .done(function (data) {
-            console.log(data);
-        }).always(function () {
-            receive();
-        })
-}
+// var receive = function () {
+//     $.get(mcastUrl)
+//         .done(function (data) {
+//             console.log(data);
+//         }).always(function () {
+//             receive();
+//         })
+// }
+// async function subscribe() {
+//     let response = await fetch(mcastUrl);
+//     if (response.status == 502) {
+//         // Status 502 is a connection timeout error,
+//         // may happen when the connection was pending for too long,
+//         // and the remote server or a proxy closed it
+//         // let's reconnect
+//         await new Promise(resolve => setTimeout(resolve, 10000));
+//         await subscribe();
+//     } else if (response.status != 200) {
+//         // An error - let's show it
+//         console.log(response.statusText);
+//         // Reconnect in one second
+//         await new Promise(resolve => setTimeout(resolve, 10000));
+//         await subscribe();
+//     } else {
+//         // Get and show the message
+//         let message = await response.text();
+//         console.log(message);
+//         // Call subscribe() again to get the next message
+//         await new Promise(resolve => setTimeout(resolve, 10000));
+//         await subscribe();
+//     }
+// }
 
-receive();
+
+
+// receive();

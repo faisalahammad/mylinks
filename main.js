@@ -45,8 +45,14 @@ form.addEventListener('submit', handleFormSubmit);
 
 // Language selector.
 function langChange(el) {
-    document.body.setAttribute('lang', el.value);
+    document.documentElement.setAttribute('lang', el.value);
 }
+
+window.addEventListener('DOMContentLoaded', e => {
+    let langOptions = Array.from(document.querySelector("#lang-select").options);
+    let defaultLang = langOptions.filter(option => option.defaultSelected == true)[0];
+    langChange(defaultLang);
+});
 
 function copyLink() {
     /* Get the text field */

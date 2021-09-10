@@ -1,12 +1,12 @@
-body[lang="en"] [lang="fr"], body[lang="fr"] [lang="en"] {
+:root[lang="en"] [lang="fr"], :root[lang="fr"] [lang="en"] {
     display: none;
 }
 
-body[lang="en"] [lang="ar"], body[lang="ar"] [lang="en"] {
+:root[lang="en"] [lang="ar"], :root[lang="ar"] [lang="en"] {
     display: none;
 }
 
-body[lang="fr"] [lang="ar"], body[lang="ar"] [lang="fr"] {
+:root[lang="fr"] [lang="ar"], :root[lang="ar"] [lang="fr"] {
     display: none;
 }
 

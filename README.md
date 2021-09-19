@@ -12,6 +12,9 @@ It is Server 'less (emphasised): It does not send data from users browsers anywh
 
 It just uses URLs and QR Code.
 
+I implemented each time a new version in a simplistic fashion so that next versions do not hurt QR-Codes made with earlier versions x)
+Although I note that the last version (3) is the one 100% server-less (no URL loggings assured by design).
+
 ## Example
 
 A link is like this:

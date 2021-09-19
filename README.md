@@ -16,8 +16,8 @@ It just uses URLs and QR Code.
 
 A link is like this:
 
-https://so-c.me/card.html?bXktYWxpYXMsc2luZmRzZmRzc3RhLHV0b2Rmc2Zkc29iLHd0Zi1hY2Vib29rLHR3YXR0ZmZlcixzbmF0Y2hjaGF0LGdlbWFpbEBnbWFpbC5jb20sMDc3ODY4MDgyNw==@2072760442%1
+https://so-c.me/card.html#bXktYWxpYXMsc2ludmZkc3RhLHV0b3ZmZG9iLHd0Zi1hY2Vib29rLHR3YXR0ZXIsc25hdGNoY2hhdCxnZW1haWxAZ21haWwuY29tLDA3Nzg2ODA4Mjc=@-1977975060%2
 
 
-Check [this card](https://so-c.me/card.html?bXktYWxpYXMsc2luZmRzZmRzc3RhLHV0b2Rmc2Zkc29iLHd0Zi1hY2Vib29rLHR3YXR0ZmZlcixzbmF0Y2hjaGF0LGdlbWFpbEBnbWFpbC5jb20sMDc3ODY4MDgyNw==@2072760442%1)
+Check [this card](https://so-c.me/card.html#bXktYWxpYXMsc2ludmZkc3RhLHV0b3ZmZG9iLHd0Zi1hY2Vib29rLHR3YXR0ZXIsc25hdGNoY2hhdCxnZW1haWxAZ21haWwuY29tLDA3Nzg2ODA4Mjc=@-1977975060%2)
  to see the corresponding QR-Code and social card online. Know that the card is deciphered from the Link only, no session, no db, no information rests in server.

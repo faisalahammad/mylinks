@@ -39,14 +39,18 @@ function reverse(url) {
         case 1:
             url_ = atobVerified(url.substring(1))
             return url_.split(",")
-        // case 1: TODO
+        case 2:
+            url_ = atobVerified(url.substring(1))
+            return url_.split(",")
         default:
             break;
     }
 }
 
 var bugous = false
-var vals = reverse(location.search)
+var url = window.location.href;
+// get part after card.html in link
+var vals = reverse(url.split('card.html')[1]);
 if (typeof(vals) === 'undefined' || vals.length === 1) {
     bugous = true
 }

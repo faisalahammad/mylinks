@@ -14,9 +14,10 @@ function btoaVerified(s) {
     return btoa(s) + "@" + btoa(s).hashCode()
 }
 
-const domain = "https://so-c.me/card.html?"
-
-const version = 1
+const domain = "https://so-c.me/card.html?";
+// This is for version 2, data is not sent to server to assure user privacy
+const domain2 = "https://so-c.me/card.html#";
+const version = 2
 var shortestString
 // When necessary create a new implementation for URL codification.
 // Anyway, it must be of form /card.html?{.*}|/d
@@ -28,6 +29,9 @@ function codify(formJSON) {
         case 1:
             shortestString = /*domain +*/ Object.values(formJSON).join(",")
             return domain + btoaVerified(shortestString) + `%${version}`    // version 1 
+        case 2:
+            shortestString = /*domain +*/ Object.values(formJSON).join(",")
+            return domain2 + btoaVerified(shortestString) + `%${version}`    // version 2 
         default:
             break;
     }

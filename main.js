@@ -37,16 +37,26 @@ function codify(formJSON) {
     }
 }
 var formData
+var limit = 181;
+// Manipulate dom on key strokes
+function handleFormKeyStrokes(event) {
+    formData = new FormData(document.querySelector('.form1'));
+    const formJSON = Object.fromEntries(formData.entries());
+    const encodedString = codify(formJSON)
+    var percentage = (encodedString.length / limit) * 100;
+    setTimeout(() => changeProgress(percentage), 1000);
+    console.log(encodedString.length);
+}
 // Manipulate dom on form submit
 function handleFormSubmit(event) {
     event.preventDefault();
-    formData = new FormData(event.target);
+    formData = new FormData(document.querySelector('.form1'));
     differForConn()
 }
-// Attach handleFormSubmit
+// Attach handleFormKeyStrokes
 const form = document.querySelector('.contact-form');
+form.addEventListener('keyup', handleFormKeyStrokes);
 form.addEventListener('submit', handleFormSubmit);
-
 // Language selector.
 function langChange(el) {
     document.documentElement.setAttribute('lang', el.value);
@@ -91,6 +101,21 @@ function handleDom() {
     console.log(encodedString);
 }
 
+const progressbar = document.querySelector(".progress");
+const error = document.querySelector(".error");
+const changeProgress = (progress) => {
+    progressbar.style.width = `${progress}%`;
+    if (progress > 100) {
+        progressbar.style.width = `100%`;
+        progressbar.style.backgroundColor = `black`;
+        document.getElementById('submit').disabled = true;
+        error.innerHTML= "You acceded text limit!";
+    }else{
+        progressbar.style.backgroundColor = `#47ff8d`;
+        document.getElementById('submit').disabled = false;
+        error.innerHTML= "";
+    }
+};
 
 function differForConn() {
     setTimeout(

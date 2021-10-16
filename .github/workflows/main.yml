@@ -14,3 +14,4 @@ jobs:
         server: ftp.cluster029.hosting.ovh.net
         username: ihurifi
         password: ${{ secrets.ftp_password }}
+        server-dir: www/

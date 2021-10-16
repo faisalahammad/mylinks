@@ -19,6 +19,7 @@ const domain = "https://so-c.me/card.html?";
 const domain2 = "https://so-c.me/card.html#";
 const version = 2
 var shortestString
+var dataURL
 // When necessary create a new implementation for URL codification.
 // Anyway, it must be of form /card.html?{.*}|/d
 function codify(formJSON) {
@@ -89,16 +90,20 @@ function handleDom() {
     // const simpleURL = new URLSearchParams(formJSON).toString()
     new QRCode(document.getElementById("qrcode"), encodedString);
     var canvas = document.getElementById('qrcode').querySelector('canvas');
-    var dataURL = canvas.toDataURL();
+    dataURL = canvas.toDataURL();
     var a = document.createElement('a');
     var linkText = document.createTextNode("Share my link");
     a.appendChild(linkText);
     a.title = "My link";
     a.href = encodedString;
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.png' href='" + dataURL + "'>Download QR code</a> | ");
+    document.querySelector('#link').insertAdjacentHTML('beforeend', "<a style='cursor:pointer' onClick='printAsPDF()'>Print As PDF</a> | ");
     document.querySelector('#link').appendChild(a);
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
-    console.log(encodedString);
+}
+
+const printAsPDF = () => {
+    printJS({ printable: dataURL, type: 'image', header: `QR code of ${form.children[0].children[0][0].value}` })
 }
 
 const progressbar = document.querySelector(".progress");
@@ -109,11 +114,11 @@ const changeProgress = (progress) => {
         progressbar.style.width = `100%`;
         progressbar.style.backgroundColor = `black`;
         document.getElementById('submit').disabled = true;
-        error.innerHTML= "You acceded text limit!";
-    }else{
+        error.innerHTML = "You acceded text limit!";
+    } else {
         progressbar.style.backgroundColor = `#47ff8d`;
         document.getElementById('submit').disabled = false;
-        error.innerHTML= "";
+        error.innerHTML = "";
     }
 };
 

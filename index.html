@@ -20,9 +20,12 @@
     <link rel="stylesheet" type='text/css' href="water.css">
     <link rel="stylesheet" crossorigin="anonymous"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
     <script type="text/javascript" src="qrcode.min.js" async></script>
+    <script type="text/javascript" src='print.min.js' async></script>
     <script type="text/javascript" src="share-buttons.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=" https://printjs-4de6.kxcdn.com/print.min.js"></script>
 </head>
 
 <body>
@@ -114,7 +117,7 @@
             <div class="input-icons">
                 <form action="#" class="form1" name="form1">
                     <i class="fa fa-user icon"></i>
-                    <input class="input-field" value="my-alias" name="user" type="text" pattern=".{6,30}" style=""
+                    <input class="input-field" value="my-alias" name="user" type="text" pattern=".{6,30}" 
                         title="6 to 20 characters">
                     <i class="fa fa-instagram icon"></i>
                     <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
@@ -132,11 +135,11 @@
                     <input class="input-field" value="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$"
                         style="background-color: #fffc00;" title="6 to 20 characters">
                     <i class="fa fa-envelope icon"></i>
-                    <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$" style=""
+                    <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$" 
                         title="non conforming email: __@__.__">
                     <i class="fa fa-phone icon"></i>
                     <input class="input-field" value="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$"
-                        style="" title="non conforming phone number: 10 digits long">
+                         title="non conforming phone number: 10 digits long">
                     <br>
                     <button type="submit" name="submit" id="submit">Get QR code</button>
                 </form>

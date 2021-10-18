@@ -42,6 +42,9 @@ function reverse(url) {
         case 2:
             url_ = atobVerified(url.substring(1))
             return url_.split(",")
+        case 3:
+            url_ = atobVerified(url.substring(1))
+            return url_.split(",")
         default:
             break;
     }
@@ -53,6 +56,11 @@ var url = window.location.href;
 var vals = reverse(url.split('card.html')[1]);
 if (typeof(vals) === 'undefined' || vals.length === 1) {
     bugous = true
+}
+// version 4: password possible !
+if(version === 3) {
+    var key = vals.pop();
+    vals = vals.map((val) => XORCipher.decode(val, key));
 }
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
 var colors = ["", "#c32aa3;", "#d71e18;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]

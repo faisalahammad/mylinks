@@ -88,7 +88,6 @@ select {
   float: right;
 }
 
-
 .progress-container {
   height: 0.8rem;
   /* width: 32rem; */
@@ -100,4 +99,9 @@ select {
   width: 0;
   background: #47ff8d;
   transition: width 0.4s ease;
+}
+
+#required {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

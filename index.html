@@ -25,7 +25,6 @@
     <script type="text/javascript" src='print.min.js' async></script>
     <script type="text/javascript" src="share-buttons.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src=" https://printjs-4de6.kxcdn.com/print.min.js"></script>
 </head>
 
 <body>
@@ -117,32 +116,36 @@
             <div class="input-icons">
                 <form action="#" class="form1" name="form1">
                     <i class="fa fa-user icon"></i>
-                    <input class="input-field" value="my-alias" name="user" type="text" pattern=".{6,30}" 
-                        title="6 to 20 characters">
+                    <input class="input-field" placeholder="my-alias *" name="user" type="text" pattern=".{6,30}" 
+                        title="6 to 20 characters" required>
                     <i class="fa fa-instagram icon"></i>
-                    <input class="input-field" value="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
+                    <input class="input-field" placeholder="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
                         style="background-color: #c32aa3;" title="6 to 20 characters">
                     <i class="fa fa-youtube icon"></i>
-                    <input class="input-field" value="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
+                    <input class="input-field" placeholder="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
                         style="background-color: #d71e18;" title="6 to 20 characters">
                     <i class="fa fa-facebook icon"></i>
-                    <input class="input-field" value="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
+                    <input class="input-field" placeholder="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
                         style="background-color: #1877f2;" title="6 to 20 characters">
                     <i class="fa fa-twitter icon"></i>
-                    <input class="input-field" value="twatter" name="twitter" type="text" pattern=".{6,30}|^$"
+                    <input class="input-field" placeholder="twatter" name="twitter" type="text" pattern=".{6,30}|^$"
                         style="background-color: #1da1f2;" title="6 to 20 characters">
                     <i class="fa fa-snapchat icon"></i>
-                    <input class="input-field" value="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$"
+                    <input class="input-field" placeholder="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$"
                         style="background-color: #fffc00;" title="6 to 20 characters">
                     <i class="fa fa-envelope icon"></i>
-                    <input class="input-field" value="gemail" name="envelope" type="email" pattern=".{6,30}|^$" 
+                    <input class="input-field" placeholder="gemail" name="envelope" type="email" pattern=".{6,30}|^$" 
                         title="non conforming email: __@__.__">
                     <i class="fa fa-phone icon"></i>
-                    <input class="input-field" value="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$"
+                    <input class="input-field" placeholder="000-Bananaphone" name="phone" type="text" pattern="\d{10}|^$"
                          title="non conforming phone number: 10 digits long">
+                    <i class="fa fa-key icon"></i>
+                    <input class="input-field" placeholder="password ⌥" name="password" type="text" pattern=".{4,8}" 
+                        title="4 to 8 characters">
                     <br>
                     <button type="submit" name="submit" id="submit">Get QR code</button>
                 </form>
+                <blockquote id="required" style="color: navy;">(*): required <br>(⌥): optional</blockquote>
             </div>
         </section>
         <div class="progress-container">
@@ -194,6 +197,7 @@
     </footer>
 
 </body>
+<script type="text/javascript" src="XORCipher.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <!-- <script type="text/javascript" src="peerjs.min.js"></script>
 <script>

@@ -17,7 +17,8 @@ function btoaVerified(s) {
 const domain = "https://so-c.me/card.html?";
 // This is for version 2, data is not sent to server to assure user privacy
 const domain2 = "https://so-c.me/card.html#";
-const version = 2
+// version 4: password possible !
+const version = 3
 var shortestString
 var dataURL
 // When necessary create a new implementation for URL codification.
@@ -33,12 +34,19 @@ function codify(formJSON) {
         case 2:
             shortestString = /*domain +*/ Object.values(formJSON).join(",")
             return domain2 + btoaVerified(shortestString) + `%${version}`    // version 2 
+        case 3:
+            var vals = Object.values(formJSON);
+            var key = vals.pop();
+            vals = vals.map((val) => XORCipher.encode(val, key));
+            shortestString = /*domain +*/ vals.join(",") + ',' + key;
+            
+            return domain2 + btoaVerified(shortestString) + `%${version}`    // version 3
         default:
             break;
     }
 }
 var formData
-var limit = 181;
+var limit = 200;
 // Manipulate dom on key strokes
 function handleFormKeyStrokes(event) {
     formData = new FormData(document.querySelector('.form1'));

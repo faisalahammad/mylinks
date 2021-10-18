@@ -59,8 +59,15 @@ if (typeof(vals) === 'undefined' || vals.length === 1) {
 }
 // version 4: password possible !
 if(version === 3) {
-    var key = vals.pop();
-    vals = vals.map((val) => XORCipher.decode(val, key));
+    document.body.hidden = true;
+    var key = prompt("This social card seems encrypted. Enter in the key!") || "";
+    if (key.length < 4 || key.length > 8) {
+        bugous = true
+        vals = vals.map((val) => 'XXXXXXXX');
+    } else {
+        vals = vals.map((val) => XORCipher.decode(key, val));
+    }
+    
 }
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
 var colors = ["", "#c32aa3;", "#d71e18;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
@@ -157,7 +164,7 @@ function generateSvg() {
     }
     return '<div id="art"> <svg width="400" height="400">' + svg + '</svg> </div>';
 }
-
+document.body.hidden = false;
 
 
 // var _id;

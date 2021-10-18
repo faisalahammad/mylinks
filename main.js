@@ -24,22 +24,21 @@ var dataURL
 // When necessary create a new implementation for URL codification.
 // Anyway, it must be of form /card.html?{.*}|/d
 function codify(formJSON) {
+    var vals = Object.values(formJSON).map((val) => val.trim());
     switch (version) {
         case 0:
-            shortestString = /*domain +*/ Object.values(formJSON).join(",")
+            shortestString = vals.join(",")
             return domain + btoa(shortestString) + `|${version}`   // version 0 
         case 1:
-            shortestString = /*domain +*/ Object.values(formJSON).join(",")
+            shortestString = vals.join(",")
             return domain + btoaVerified(shortestString) + `%${version}`    // version 1 
         case 2:
-            shortestString = /*domain +*/ Object.values(formJSON).join(",")
+            shortestString = vals.join(",")
             return domain2 + btoaVerified(shortestString) + `%${version}`    // version 2 
         case 3:
-            var vals = Object.values(formJSON);
             var key = vals.pop();
-            vals = vals.map((val) => XORCipher.encode(val, key));
-            shortestString = /*domain +*/ vals.join(",") + ',' + key;
-            
+            vals = key ? vals.map((val) => XORCipher.encode(key, val)) : vals;
+            shortestString = vals.join(",");
             return domain2 + btoaVerified(shortestString) + `%${version}`    // version 3
         default:
             break;

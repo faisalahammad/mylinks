@@ -61,14 +61,16 @@ if (typeof(vals) === 'undefined' || vals.length === 1) {
 if(version === 3) {
     document.body.hidden = true;
     var key = prompt("This social card seems encrypted. Enter in the key!") || "";
-    if (key.length < 4 || key.length > 8) {
-        bugous = true
-        vals = vals.map((val) => 'XXXXXXXX');
-    } else {
-        vals = vals.map((val) => XORCipher.decode(key, val));
+    if(key.length!=0) {
+        if (key.length < 4 || key.length > 8) {
+            bugous = true
+            vals = vals.map((val) => 'XXXXXXXX');
+        } else {
+            vals = vals.map((val) => XORCipher.decode(key, val));
+        }
     }
-    
 }
+
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
 var colors = ["", "#c32aa3;", "#d71e18;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
 const form = document.querySelector('.form1');

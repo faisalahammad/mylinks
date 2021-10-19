@@ -92,10 +92,12 @@ window.addEventListener('DOMContentLoaded', e => {
     langChange(defaultLang);
 });
 
+var submittedSocials = 0
 // Manipulate dom based on values from URL
 keys.forEach(function (key, i) {
     try {
         if (vals[i] != '') {
+          submittedSocials += 1
           if (key === "envelope") {
               form.insertAdjacentHTML('beforeend', `&nbsp;<a href="mailto:${vals[i]}">${vals[i]}</a>`)
               return
@@ -124,6 +126,11 @@ keys.forEach(function (key, i) {
         bugous = true
     }
 })
+
+// Values over 7 result in svg images too large for the card
+if (submittedSocials > 7) {
+  submittedSocials = 7;
+}
 
 // Generate some art
 if (!_isMobile && !bugous) {
@@ -155,10 +162,12 @@ function generateSvg() {
     var fill_choices = ['gray', 'gray', 'maroon', 'maroon', 'maroon', 'maroon', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent'];
     var stroke_choices = [1, 3, 5];
 
+    var svgHeight = 0;
     for (var index_x = 0; index_x < 7; index_x++) {
-        for (var index_y = 0; index_y < 7; index_y++) {
+        for (var index_y = 0; index_y < submittedSocials; index_y++) {
             var rectangle_width = getRandomItem(width_choices);
             var rectangle_height = getRandomItem(width_choices);
+            svgHeight += rectangle_height;
             var random_fill_color = getRandomItem(fill_choices);
             var random_stroke_width = getRandomItem(stroke_choices);
             svg = svg + '<rect x="' + index_x * width + '" y="' + index_y * height +
@@ -166,7 +175,7 @@ function generateSvg() {
                 '" stroke="black" fill="' + random_fill_color + '" stroke-width="' + random_stroke_width + '"/>';
         }
     }
-    return '<div id="art"> <svg width="400" height="400">' + svg + '</svg> </div>';
+    return `<div id="art"> <svg width="400" height=${svgHeight}>` + svg + '</svg> </div>';
 }
 document.body.hidden = false;
 

@@ -95,28 +95,30 @@ window.addEventListener('DOMContentLoaded', e => {
 // Manipulate dom based on values from URL
 keys.forEach(function (key, i) {
     try {
-        if (key === "envelope") {
-            form.insertAdjacentHTML('beforeend', `&nbsp;<a href="mailto:${vals[i]}">${vals[i]}</a>`)
-            return
-        }
-        if (key === "phone") {
-            form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a href="tel:${vals[i]}">${vals[i]}</a><br>`)
-            return
-        }
-        if (key === "user") {
-            document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] })
-        }
-        var x = document.createElement("I");
-        x.setAttribute("class", `fa fa-${key} icon`);
-        form.appendChild(x)
+        if (vals[i] != '') {
+          if (key === "envelope") {
+              form.insertAdjacentHTML('beforeend', `&nbsp;<a href="mailto:${vals[i]}">${vals[i]}</a>`)
+              return
+          }
+          if (key === "phone") {
+              form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a href="tel:${vals[i]}">${vals[i]}</a><br>`)
+              return
+          }
+          if (key === "user") {
+              document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] })
+          }
+          var x = document.createElement("I");
+          x.setAttribute("class", `fa fa-${key} icon`);
+          form.appendChild(x)
 
-        var y = document.createElement("INPUT");
-        y.setAttribute("class", "input-field");
-        y.setAttribute("value", vals[i]);
-        y.setAttribute("type", "text");
-        y.setAttribute("style", `background-color: ${colors[i]}`)
-        y.setAttribute("readonly", "readonly");
-        form.appendChild(y)
+          var y = document.createElement("INPUT");
+          y.setAttribute("class", "input-field");
+          y.setAttribute("value", vals[i]);
+          y.setAttribute("type", "text");
+          y.setAttribute("style", `background-color: ${colors[i]}`)
+          y.setAttribute("readonly", "readonly");
+          form.appendChild(y)
+        }
 
     } catch (error) {
         bugous = true

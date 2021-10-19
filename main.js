@@ -85,6 +85,11 @@ function copyLink() {
     document.execCommand("copy");
 }
 
+function clearPreviousQR() {
+    document.getElementById("qrcode").innerHTML = '';
+    document.querySelector("#link").innerHTML = '';
+}
+
 function handleDom() {
     // for multi-selects, we need special handling
     const formJSON = Object.fromEntries(formData.entries());
@@ -95,6 +100,9 @@ function handleDom() {
     // console.log(hotLink)
 
     // const simpleURL = new URLSearchParams(formJSON).toString()
+    if (document.getElementById("qrcode").innerHTML != '') {
+      clearPreviousQR();
+    }
     new QRCode(document.getElementById("qrcode"), encodedString);
     var canvas = document.getElementById('qrcode').querySelector('canvas');
     dataURL = canvas.toDataURL();

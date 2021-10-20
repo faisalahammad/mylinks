@@ -37,7 +37,11 @@ function codify(formJSON) {
             return domain2 + btoaVerified(shortestString) + `%${version}`    // version 2 
         case 3:
             var key = vals.pop();
-            vals = key ? vals.map((val) => XORCipher.encode(key, val)) : vals;
+            vals = key ? vals.map((val) => {
+                if (val)
+                    return XORCipher.encode(key, val)
+                return val;
+            }) : vals;
             shortestString = vals.join(",");
             return domain2 + btoaVerified(shortestString) + `%${version}`    // version 3
         default:

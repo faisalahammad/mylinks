@@ -66,7 +66,12 @@ if(version === 3) {
             bugous = true
             vals = vals.map((val) => 'XXXXXXXX');
         } else {
-            vals = vals.map((val) => XORCipher.decode(key, val));
+            vals = vals.map((val) => {
+                if(val)
+                    return XORCipher.decode(key, val)
+                else
+                    return val
+            });
         }
     }
 }

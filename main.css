@@ -105,3 +105,10 @@ select {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
+.card-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}

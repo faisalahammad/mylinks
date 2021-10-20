@@ -57,24 +57,6 @@ var vals = reverse(url.split('card.html')[1]);
 if (typeof(vals) === 'undefined' || vals.length === 1) {
     bugous = true
 }
-// version 4: password possible !
-if(version === 3) {
-    document.body.hidden = true;
-    var key = prompt("This social card seems encrypted. Enter in the key!") || "";
-    if(key.length!=0) {
-        if (key.length < 4 || key.length > 8) {
-            bugous = true
-            vals = vals.map((val) => 'XXXXXXXX');
-        } else {
-            vals = vals.map((val) => {
-                if(val)
-                    return XORCipher.decode(key, val)
-                else
-                    return val
-            });
-        }
-    }
-}
 
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
 var colors = ["", "#c32aa3;", "#d71e18;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
@@ -97,6 +79,51 @@ window.addEventListener('DOMContentLoaded', e => {
     langChange(defaultLang);
 });
 
+function updateSocials() {
+    var skippedSocials = 0
+    keys.forEach(function (key, i) {
+        if (vals[i] != '') {
+            if (key === "envelope") {
+                document.getElementById("mail-id").remove();
+                form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`);
+                return
+            }
+            if (key === "phone") {
+                document.getElementById("phone-id").remove();
+                form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
+                return
+            }
+            if (key === "user") {
+                document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
+            }
+            var y = document.getElementsByClassName("input-field")[i - skippedSocials];
+            y.value = vals[i];
+            } else {
+              skippedSocials += 1;
+            }
+      })
+}
+
+// Make decrypt button event listener
+// version 4: password possible !
+if (version === 3) {
+    const btn = document.getElementById("decrypt-button")
+    btn.addEventListener("click", function() {
+        var password = prompt("This social card seems encrypted. Enter in the key!") || "";
+        if (password.length < 4 || password.length > 8) {
+            bugous = true;
+        } else {
+            vals = vals.map((val) => {
+                if(val)
+                    return XORCipher.decode(password, val)
+                else
+                    return val
+            });
+          updateSocials();
+        }
+    });
+}
+
 var submittedSocials = 0
 // Manipulate dom based on values from URL
 keys.forEach(function (key, i) {
@@ -104,11 +131,11 @@ keys.forEach(function (key, i) {
         if (vals[i] != '') {
           submittedSocials += 1
           if (key === "envelope") {
-              form.insertAdjacentHTML('beforeend', `&nbsp;<a href="mailto:${vals[i]}">${vals[i]}</a>`)
+              form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`)
               return
           }
           if (key === "phone") {
-              form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a href="tel:${vals[i]}">${vals[i]}</a><br>`)
+              form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
               return
           }
           if (key === "user") {
@@ -167,12 +194,10 @@ function generateSvg() {
     var fill_choices = ['gray', 'gray', 'maroon', 'maroon', 'maroon', 'maroon', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent'];
     var stroke_choices = [1, 3, 5];
 
-    var svgHeight = 0;
     for (var index_x = 0; index_x < 7; index_x++) {
         for (var index_y = 0; index_y < submittedSocials; index_y++) {
             var rectangle_width = getRandomItem(width_choices);
             var rectangle_height = getRandomItem(width_choices);
-            svgHeight += rectangle_height;
             var random_fill_color = getRandomItem(fill_choices);
             var random_stroke_width = getRandomItem(stroke_choices);
             svg = svg + '<rect x="' + index_x * width + '" y="' + index_y * height +
@@ -180,7 +205,7 @@ function generateSvg() {
                 '" stroke="black" fill="' + random_fill_color + '" stroke-width="' + random_stroke_width + '"/>';
         }
     }
-    return `<div id="art"> <svg width="400" height=${svgHeight}>` + svg + '</svg> </div>';
+    return `<div id="art"> <svg width="400" height=${submittedSocials * 50}>` + svg + '</svg> </div>';
 }
 document.body.hidden = false;
 

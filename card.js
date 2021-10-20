@@ -80,25 +80,28 @@ window.addEventListener('DOMContentLoaded', e => {
 });
 
 function updateSocials() {
+    var skippedSocials = 0
     keys.forEach(function (key, i) {
-    if (vals[i] != '') {
-        if (key === "envelope") {
-            document.getElementById("mail-id").remove();
-            form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`);
-            return
-        }
-        if (key === "phone") {
-            document.getElementById("phone-id").remove();
-            form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
-            return
-        }
-        if (key === "user") {
-            document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
-        }
-        var y = document.getElementsByClassName("input-field")[i];
-        y.value = vals[i];
-        }
-    })
+        if (vals[i] != '') {
+            if (key === "envelope") {
+                document.getElementById("mail-id").remove();
+                form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`);
+                return
+            }
+            if (key === "phone") {
+                document.getElementById("phone-id").remove();
+                form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
+                return
+            }
+            if (key === "user") {
+                document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
+            }
+            var y = document.getElementsByClassName("input-field")[i - skippedSocials];
+            y.value = vals[i];
+            } else {
+              skippedSocials += 1;
+            }
+      })
 }
 
 // Make decrypt button event listener

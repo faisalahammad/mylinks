@@ -29,8 +29,8 @@ td[lang="ar"] {
 }
 
 @media (prefers-color-scheme: light) {
-  #particles-js canvas {
-      /* background: #5f5f5fb4; */
+  body {
+      background: #c7c7c6 !important;
   }
 }
 
@@ -123,4 +123,10 @@ select {
 #mail-id {
   font-size: 18px;
   margin: 10px 0;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    th { width: 3rem !important; }
 }

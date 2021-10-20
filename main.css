@@ -112,3 +112,9 @@ select {
   align-items: flex-end;
   justify-content: space-between;
 }
+
+#phone-id,
+#mail-id {
+  font-size: 18px;
+  margin: 10px 0;
+}

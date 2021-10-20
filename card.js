@@ -57,24 +57,6 @@ var vals = reverse(url.split('card.html')[1]);
 if (typeof(vals) === 'undefined' || vals.length === 1) {
     bugous = true
 }
-// version 4: password possible !
-if(version === 3) {
-    document.body.hidden = true;
-    var key = prompt("This social card seems encrypted. Enter in the key!") || "";
-    if(key.length!=0) {
-        if (key.length < 4 || key.length > 8) {
-            bugous = true
-            vals = vals.map((val) => 'XXXXXXXX');
-        } else {
-            vals = vals.map((val) => {
-                if(val)
-                    return XORCipher.decode(key, val)
-                else
-                    return val
-            });
-        }
-    }
-}
 
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
 var colors = ["", "#c32aa3;", "#d71e18;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
@@ -97,6 +79,49 @@ window.addEventListener('DOMContentLoaded', e => {
     langChange(defaultLang);
 });
 
+function updateSocials() {
+  keys.forEach(function (key, i) {
+    if (vals[i] != '') {
+      if (key === "envelope") {
+          document.getElementById("mail-id").remove();
+          form.insertAdjacentHTML('beforeend', `&nbsp;<a id="mail-id" href="mailto:${vals[i]}">${vals[i]}</a>`);
+          return
+      }
+      if (key === "phone") {
+          document.getElementById("phone-id").remove();
+          form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a id="phone-id" href="tel:${vals[i]}">${vals[i]}</a><br>`)
+          return
+      }
+      if (key === "user") {
+          document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
+      }
+      var y = document.getElementsByClassName("input-field")[i];
+      console.log(y);
+      y.value = vals[i];
+      }
+  })
+}
+
+// Make decrypt button event listener
+// version 4: password possible !
+if (version === 3) {
+    const btn = document.getElementById("decrypt-button")
+    btn.addEventListener("click", function() {
+        var password = prompt("This social card seems encrypted. Enter in the key!") || "";
+        if (password.length < 4 || password.length > 8) {
+            bugous = true;
+        } else {
+            vals = vals.map((val) => {
+                if(val)
+                    return XORCipher.decode(password, val)
+                else
+                    return val
+            });
+          updateSocials();
+        }
+    });
+}
+
 var submittedSocials = 0
 // Manipulate dom based on values from URL
 keys.forEach(function (key, i) {
@@ -104,11 +129,11 @@ keys.forEach(function (key, i) {
         if (vals[i] != '') {
           submittedSocials += 1
           if (key === "envelope") {
-              form.insertAdjacentHTML('beforeend', `&nbsp;<a href="mailto:${vals[i]}">${vals[i]}</a>`)
+              form.insertAdjacentHTML('beforeend', `&nbsp;<a id="mail-id" href="mailto:${vals[i]}">${vals[i]}</a>`)
               return
           }
           if (key === "phone") {
-              form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a href="tel:${vals[i]}">${vals[i]}</a><br>`)
+              form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a id="phone-id" href="tel:${vals[i]}">${vals[i]}</a><br>`)
               return
           }
           if (key === "user") {

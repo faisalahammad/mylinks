@@ -80,26 +80,25 @@ window.addEventListener('DOMContentLoaded', e => {
 });
 
 function updateSocials() {
-  keys.forEach(function (key, i) {
+    keys.forEach(function (key, i) {
     if (vals[i] != '') {
-      if (key === "envelope") {
-          document.getElementById("mail-id").remove();
-          form.insertAdjacentHTML('beforeend', `&nbsp;<a id="mail-id" href="mailto:${vals[i]}">${vals[i]}</a>`);
-          return
-      }
-      if (key === "phone") {
-          document.getElementById("phone-id").remove();
-          form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a id="phone-id" href="tel:${vals[i]}">${vals[i]}</a><br>`)
-          return
-      }
-      if (key === "user") {
-          document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
-      }
-      var y = document.getElementsByClassName("input-field")[i];
-      console.log(y);
-      y.value = vals[i];
-      }
-  })
+        if (key === "envelope") {
+            document.getElementById("mail-id").remove();
+            form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`);
+            return
+        }
+        if (key === "phone") {
+            document.getElementById("phone-id").remove();
+            form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
+            return
+        }
+        if (key === "user") {
+            document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
+        }
+        var y = document.getElementsByClassName("input-field")[i];
+        y.value = vals[i];
+        }
+    })
 }
 
 // Make decrypt button event listener
@@ -129,11 +128,11 @@ keys.forEach(function (key, i) {
         if (vals[i] != '') {
           submittedSocials += 1
           if (key === "envelope") {
-              form.insertAdjacentHTML('beforeend', `&nbsp;<a id="mail-id" href="mailto:${vals[i]}">${vals[i]}</a>`)
+              form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`)
               return
           }
           if (key === "phone") {
-              form.insertAdjacentHTML('beforeend', `<br>&nbsp;<a id="phone-id" href="tel:${vals[i]}">${vals[i]}</a><br>`)
+              form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
               return
           }
           if (key === "user") {

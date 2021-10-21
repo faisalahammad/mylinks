@@ -52,6 +52,7 @@ td[lang="ar"] {
 
 .input-field {
   text-indent: 45px;
+  line-height: 125%;
 }
 
 .input-field:disabled:hover {

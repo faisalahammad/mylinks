@@ -134,7 +134,7 @@ const changeProgress = (progress) => {
         progressbar.style.width = `100%`;
         progressbar.style.backgroundColor = `black`;
         document.getElementById('submit').disabled = true;
-        error.innerHTML = "You acceded text limit!";
+        error.innerHTML = "You exceeded the text limit!";
     } else {
         progressbar.style.backgroundColor = `#47ff8d`;
         document.getElementById('submit').disabled = false;

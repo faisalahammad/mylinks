@@ -119,6 +119,7 @@ function handleDom() {
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<a style='cursor:pointer' onClick='printAsPDF()'>Print As PDF</a> | ");
     document.querySelector('#link').appendChild(a);
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
+    document.getElementById('qrcode').scrollIntoView();
 }
 
 const printAsPDF = () => {

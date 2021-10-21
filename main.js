@@ -57,7 +57,6 @@ function handleFormKeyStrokes(event) {
     const encodedString = codify(formJSON)
     var percentage = (encodedString.length / limit) * 100;
     setTimeout(() => changeProgress(percentage), 1000);
-    console.log(encodedString.length);
 }
 // Manipulate dom on form submit
 function handleFormSubmit(event) {

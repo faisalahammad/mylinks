@@ -18,8 +18,6 @@ function atobVerified(s) {
         return ""
 }
 
-
-
 var version
 
 // Gets URL encoding version 
@@ -59,7 +57,6 @@ if (typeof(vals) === 'undefined' || vals.length === 1) {
 }
 
 var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
-var colors = ["", "#c32aa3;", "#d71e18;", "#1877f2;", "#1da1f2;", "#fffc00;", "", ""]
 const form = document.querySelector('.form1');
 
 let _isMobile = false
@@ -146,10 +143,10 @@ keys.forEach(function (key, i) {
           form.appendChild(x)
 
           var y = document.createElement("INPUT");
+          y.setAttribute("name", key);
           y.setAttribute("class", "input-field");
           y.setAttribute("value", vals[i]);
           y.setAttribute("type", "text");
-          y.setAttribute("style", `background-color: ${colors[i]}`)
           y.setAttribute("readonly", "readonly");
           form.appendChild(y)
         }

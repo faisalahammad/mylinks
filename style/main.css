@@ -52,10 +52,43 @@ td[lang="ar"] {
 
 .input-field {
   text-indent: 45px;
+  line-height: 125%;
+  color: #dbdbdb;
 }
 
 .input-field:disabled:hover {
   cursor: auto;
+}
+
+input[name="instagram"] {
+  color: #dbdbdb;
+  background-color: #C13584;
+}
+
+input[name="youtube"] {
+  color: #dbdbdb;
+  background-color: #FF0000;
+}
+
+input[name="facebook"] {
+  color: #dbdbdb;
+  background-color: #4267B2;
+}
+
+input[name="twitter"] {
+  color: #dbdbdb;
+  background-color: #1DA1F2;
+}
+
+input[name="snapchat"] {
+  color: #797979;
+  background-color: #FEFC00;
+}
+
+#phone-id,
+#mail-id {
+  font-size: 18px;
+  margin: 10px 0;
 }
 
 th {
@@ -117,12 +150,6 @@ select {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-}
-
-#phone-id,
-#mail-id {
-  font-size: 18px;
-  margin: 10px 0;
 }
 
 /* Chrome 29+ */

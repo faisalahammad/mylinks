@@ -57,7 +57,6 @@ function handleFormKeyStrokes(event) {
     const encodedString = codify(formJSON)
     var percentage = (encodedString.length / limit) * 100;
     setTimeout(() => changeProgress(percentage), 1000);
-    console.log(encodedString.length);
 }
 // Manipulate dom on form submit
 function handleFormSubmit(event) {
@@ -119,6 +118,7 @@ function handleDom() {
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<a style='cursor:pointer' onClick='printAsPDF()'>Print As PDF</a> | ");
     document.querySelector('#link').appendChild(a);
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
+    document.getElementById('qrcode').scrollIntoView();
 }
 
 const printAsPDF = () => {
@@ -133,7 +133,7 @@ const changeProgress = (progress) => {
         progressbar.style.width = `100%`;
         progressbar.style.backgroundColor = `black`;
         document.getElementById('submit').disabled = true;
-        error.innerHTML = "You acceded text limit!";
+        error.innerHTML = "You exceeded the text limit!";
     } else {
         progressbar.style.backgroundColor = `#47ff8d`;
         document.getElementById('submit').disabled = false;

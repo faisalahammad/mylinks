@@ -170,7 +170,7 @@ if (bugous) {
     // rollback
     form.innerHTML = ""
     var img = document.createElement('img');
-    img.src = 'giphy.gif';
+    img.src = 'assets/giphy.gif';
     form.appendChild(img);
     var p = document.createElement('p');
     p.innerText = "QR code or URL is probably wrong"

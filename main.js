@@ -18,7 +18,7 @@ const domain = "https://so-c.me/card.html?";
 // This is for version 2, data is not sent to server to assure user privacy
 const domain2 = "https://so-c.me/card.html#";
 // version 4: password possible !
-const version = 3
+const version = 4
 var shortestString
 var dataURL
 // When necessary create a new implementation for URL codification.
@@ -44,6 +44,15 @@ function codify(formJSON) {
             }) : vals;
             shortestString = vals.join(",");
             return domain2 + btoaVerified(shortestString) + `%${version}`    // version 3
+        case 4:
+            var key = vals.pop();
+            vals = key ? vals.map((val) => {
+                if (val)
+                    return XORCipher.encode(key, val)
+                return val;
+            }) : vals;
+            shortestString = vals.join(",");
+            return domain2 + btoaVerified(shortestString) + "15432" + `%${version}`    // version 4
         default:
             break;
     }

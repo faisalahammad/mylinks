@@ -43,6 +43,11 @@ function reverse(url) {
         case 3:
             url_ = atobVerified(url.substring(1))
             return url_.split(",")
+        case 4:
+            order = url.substring(url.length - 5)
+            url = url.substring(0, url.length - 5)
+            url_ = atobVerified(url.substring(1))
+            return url_.split(",")
         default:
             break;
     }

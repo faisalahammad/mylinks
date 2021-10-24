@@ -55,6 +55,7 @@ function reverse(url) {
 
 var bugous = false
 var url = window.location.href;
+var order = "00000"
 // get part after card.html in link
 var vals = reverse(url.split('card.html')[1]);
 if (typeof(vals) === 'undefined' || vals.length === 1) {
@@ -78,9 +79,9 @@ function createDataArray() {
   return dataArray
 }
 
+
 const form = document.querySelector('.form1');
-var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
-dataArray = createDataArray();
+var dataArray = createDataArray();
 dataArray.sort();
 
 let _isMobile = false
@@ -100,85 +101,76 @@ window.addEventListener('DOMContentLoaded', e => {
     langChange(defaultLang);
 });
 
-function updateSocials() {
-    var skippedSocials = 0
-    keys.forEach(function (key, i) {
-        if (vals[i] != '') {
-            if (key === "envelope") {
-                document.getElementById("mail-id").remove();
-                form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`);
-                return
-            }
-            if (key === "phone") {
-                document.getElementById("phone-id").remove();
-                form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
-                return
-            }
-            if (key === "user") {
-                document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
-            }
-            var y = document.getElementsByClassName("input-field")[i - skippedSocials];
-            y.value = vals[i];
-            } else {
-              skippedSocials += 1;
-            }
-      })
+function updateSocials(dataArray) {
+    for (socialArray of dataArray) {
+        var key = socialArray[1];
+        var value = socialArray[2];
+        if (key === "envelope") {
+            document.getElementById("mail-id").remove();
+        } else if (key === "phone") {
+            document.getElementById("phone-id").remove();
+        } else if (value == '') {
+            skippedSocials += 1
+        } else {
+            document.getElementsByName(key)[0].remove();
+        }
+    }
+    inputSubmittedData(dataArray);
 }
 
 // Make decrypt button event listener
 // version 4: password possible !
-if (version === 3) {
+if (version >= 3) {
     const btn = document.getElementById("decrypt-button")
     btn.addEventListener("click", function() {
         var password = prompt("This social card seems encrypted. Enter in the key!") || "";
         if (password.length < 4 || password.length > 8) {
             bugous = true;
         } else {
-            vals = vals.map((val) => {
-                if(val)
-                    return XORCipher.decode(password, val)
-                else
-                    return val
-            });
-          updateSocials();
+            for (socialArray of dataArray) {
+                if (socialArray[2]) {
+                    socialArray[2] = XORCipher.decode(password, socialArray[2]);
+                }
+            }
+            updateSocials(dataArray);
         }
     });
 }
 
 var submittedSocials = 0
-// Manipulate dom based on values from URL
-keys.forEach(function (key, i) {
-    try {
-        if (vals[i] != '') {
-          submittedSocials += 1
-          if (key === "envelope") {
-              form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`)
-              return
-          }
-          if (key === "phone") {
-              form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
-              return
-          }
-          if (key === "user") {
-              document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] })
-          }
-          var x = document.createElement("I");
-          x.setAttribute("class", `fa fa-${key} icon`);
-          form.appendChild(x)
-
-          var y = document.createElement("INPUT");
-          y.setAttribute("name", key);
-          y.setAttribute("class", "input-field");
-          y.setAttribute("value", vals[i]);
-          y.setAttribute("type", "text");
-          y.setAttribute("readonly", "readonly");
-          form.appendChild(y)
+function inputSubmittedData(dataArray) {
+    for (socialArray of dataArray) {
+        var key = socialArray[1];
+        var value = socialArray[2];
+        if (value != '') {
+            submittedSocials += 1;
+        if (key === "envelope") {
+            form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${value}">${value}</a></div>`)
+            continue
         }
+        if (key === "phone") {
+            form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${value}">${value}</a></div>`)
+            continue
+        }
+        if (key === "user") {
+            document.querySelectorAll('.user').forEach(node => { node.innerHTML = value })
+        }
+        var x = document.createElement("I");
+        x.setAttribute("class", `fa fa-${key} icon`);
+        form.appendChild(x)
 
-    } catch (error) {
-        bugous = true
+        var y = document.createElement("INPUT");
+        y.setAttribute("name", key);
+        y.setAttribute("class", "input-field");
+        y.setAttribute("value", value);
+        y.setAttribute("type", "text");
+        y.setAttribute("readonly", "readonly");
+        form.appendChild(y)
+        }
     }
-})
+}
+
+inputSubmittedData(dataArray);
 
 // Values over 7 result in svg images too large for the card
 if (submittedSocials > 7) {

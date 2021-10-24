@@ -61,8 +61,27 @@ if (typeof(vals) === 'undefined' || vals.length === 1) {
     bugous = true
 }
 
-var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
+function createDataArray() {
+    var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
+    const dataArray = []
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i] == 'user') {
+        dataArray.push([0, keys[i], vals[i]])
+    } else if (keys[i] == 'envelope') {
+        dataArray.push([keys.length - 2, keys[i], vals[i]])
+    } else if (keys[i] == 'phone') {
+        dataArray.push([keys.length - 1, keys[i], vals[i]])
+    } else {
+        dataArray.push([order[i - 1], keys[i], vals[i]]); 
+    }
+  }
+  return dataArray
+}
+
 const form = document.querySelector('.form1');
+var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
+dataArray = createDataArray();
+dataArray.sort();
 
 let _isMobile = false
 // device detection

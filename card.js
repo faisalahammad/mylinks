@@ -19,7 +19,6 @@ function atobVerified(s) {
 }
 
 var version
-
 // Gets URL encoding version 
 // and extracts values based on that version
 function reverse(url) {
@@ -55,6 +54,7 @@ function reverse(url) {
 
 var bugous = false
 var url = window.location.href;
+// Default order
 var order = "00000"
 // get part after card.html in link
 var vals = reverse(url.split('card.html')[1]);
@@ -79,7 +79,6 @@ function createDataArray() {
   return dataArray
 }
 
-
 const form = document.querySelector('.form1');
 var dataArray = createDataArray();
 dataArray.sort();
@@ -101,23 +100,6 @@ window.addEventListener('DOMContentLoaded', e => {
     langChange(defaultLang);
 });
 
-function updateSocials(dataArray) {
-    for (socialArray of dataArray) {
-        var key = socialArray[1];
-        var value = socialArray[2];
-        if (key === "envelope") {
-            document.getElementById("mail-id").remove();
-        } else if (key === "phone") {
-            document.getElementById("phone-id").remove();
-        } else if (value == '') {
-            skippedSocials += 1
-        } else {
-            document.getElementsByName(key)[0].remove();
-        }
-    }
-    inputSubmittedData(dataArray);
-}
-
 // Make decrypt button event listener
 // version 4: password possible !
 if (version >= 3) {
@@ -132,7 +114,8 @@ if (version >= 3) {
                     socialArray[2] = XORCipher.decode(password, socialArray[2]);
                 }
             }
-            updateSocials(dataArray);
+            document.getElementsByClassName('form1')[0].innerHTML = '';
+            inputSubmittedData(dataArray);
         }
     });
 }

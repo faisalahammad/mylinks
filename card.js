@@ -127,28 +127,26 @@ function inputSubmittedData(dataArray) {
         var value = socialArray[2];
         if (value != '') {
             submittedSocials += 1;
-        if (key === "envelope") {
-            form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${value}">${value}</a></div>`)
-            continue
-        }
-        if (key === "phone") {
-            form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${value}">${value}</a></div>`)
-            continue
-        }
-        if (key === "user") {
-            document.querySelectorAll('.user').forEach(node => { node.innerHTML = value })
-        }
-        var x = document.createElement("I");
-        x.setAttribute("class", `fa fa-${key} icon`);
-        form.appendChild(x)
+            if (key === "envelope") {
+                form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${value}">${value}</a></div>`)
+                continue
+            } else if (key === "phone") {
+                form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${value}">${value}</a></div>`)
+                continue
+            } else if (key === "user") {
+                document.querySelectorAll('.user').forEach(node => { node.innerHTML = value })
+            }
+            var x = document.createElement("I");
+            x.setAttribute("class", `fa fa-${key} icon`);
+            form.appendChild(x)
 
-        var y = document.createElement("INPUT");
-        y.setAttribute("name", key);
-        y.setAttribute("class", "input-field");
-        y.setAttribute("value", value);
-        y.setAttribute("type", "text");
-        y.setAttribute("readonly", "readonly");
-        form.appendChild(y)
+            var y = document.createElement("INPUT");
+            y.setAttribute("name", key);
+            y.setAttribute("class", "input-field");
+            y.setAttribute("value", value);
+            y.setAttribute("type", "text");
+            y.setAttribute("readonly", "readonly");
+            form.appendChild(y)
         }
     }
 }

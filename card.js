@@ -48,7 +48,8 @@ function createDataArray() {
     } else if (keys[i] == 'phone') {
         dataArray.push([keys.length - 1, keys[i], vals[i]])
     } else {
-        dataArray.push([order[i - 1], keys[i], vals[i]]); 
+        var socialOrder = order[i - 1];
+        dataArray.push([socialOrder, keys[i], vals[socialOrder]]); 
     }
   }
   return dataArray

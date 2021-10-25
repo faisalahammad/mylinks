@@ -14,7 +14,6 @@ function btoaVerified(s) {
     return btoa(s) + "@" + btoa(s).hashCode()
 }
 
-var order = "51432"
 function codify(formJSON) {
     var vals = Object.values(formJSON).map((val) => val.trim());
     var key = vals.pop();
@@ -39,6 +38,7 @@ function handleFormKeyStrokes() {
 }
 // Manipulate dom on form submit
 function handleFormSubmit(event) {
+    getOrder();
     event.preventDefault();
     formData = new FormData(document.querySelector('.form1'));
     differForConn()
@@ -70,6 +70,16 @@ function copyLink() {
 function clearPreviousQR() {
     document.getElementById("qrcode").innerHTML = '';
     document.querySelector("#link").innerHTML = '';
+}
+
+var order = ""
+function getOrder() {
+    order = "";
+    const socialArray = ["instagram", "youtube", "facebook", "twitter", "snapchat"]
+    var socials = document.getElementsByClassName("sortable-input");
+    for (var social of socials) {
+        order += socialArray.indexOf(social.name) + 1;
+    }
 }
 
 function handleDom() {

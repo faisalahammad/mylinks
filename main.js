@@ -23,7 +23,13 @@ function codify(formJSON) {
         return val;
     }) : vals;
     var shortestString = vals.join(",");
-    return `${window.location.href}/card.html#` + btoaVerified(shortestString) + order
+    var envPath = window.location.href;
+    // localhost includes index.html but not on web server
+    // so remove it from path on localhost environment
+    if(envPath.indexOf('file:///') === 0) {
+        envPath = envPath.split('/index.html')[0]
+    }
+    return `${envPath}/card.html#` + btoaVerified(shortestString) + order
 }
 
 var formData

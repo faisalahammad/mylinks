@@ -14,53 +14,23 @@ function btoaVerified(s) {
     return btoa(s) + "@" + btoa(s).hashCode()
 }
 
-const domain = "https://so-c.me/card.html?";
-// This is for version 2, data is not sent to server to assure user privacy
-const domain2 = "https://so-c.me/card.html#";
-// version 4: password possible !
-const version = 4
-var shortestString
-var dataURL
-// When necessary create a new implementation for URL codification.
-// Anyway, it must be of form /card.html?{.*}|/d
+var order = "51432"
 function codify(formJSON) {
     var vals = Object.values(formJSON).map((val) => val.trim());
-    switch (version) {
-        case 0:
-            shortestString = vals.join(",")
-            return domain + btoa(shortestString) + `|${version}`   // version 0 
-        case 1:
-            shortestString = vals.join(",")
-            return domain + btoaVerified(shortestString) + `%${version}`    // version 1 
-        case 2:
-            shortestString = vals.join(",")
-            return domain2 + btoaVerified(shortestString) + `%${version}`    // version 2 
-        case 3:
-            var key = vals.pop();
-            vals = key ? vals.map((val) => {
-                if (val)
-                    return XORCipher.encode(key, val)
-                return val;
-            }) : vals;
-            shortestString = vals.join(",");
-            return domain2 + btoaVerified(shortestString) + `%${version}`    // version 3
-        case 4:
-            var key = vals.pop();
-            vals = key ? vals.map((val) => {
-                if (val)
-                    return XORCipher.encode(key, val)
-                return val;
-            }) : vals;
-            shortestString = vals.join(",");
-            return domain2 + btoaVerified(shortestString) + "15432" + `%${version}`    // version 4
-        default:
-            break;
-    }
+    var key = vals.pop();
+    vals = key ? vals.map((val) => {
+        if (val)
+            return XORCipher.encode(key, val)
+        return val;
+    }) : vals;
+    var shortestString = vals.join(",");
+    return `${window.location.href}/card.html#` + btoaVerified(shortestString) + order
 }
+
 var formData
 var limit = 200;
 // Manipulate dom on key strokes
-function handleFormKeyStrokes(event) {
+function handleFormKeyStrokes() {
     formData = new FormData(document.querySelector('.form1'));
     const formJSON = Object.fromEntries(formData.entries());
     const encodedString = codify(formJSON)

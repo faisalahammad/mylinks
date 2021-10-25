@@ -18,38 +18,13 @@ function atobVerified(s) {
         return ""
 }
 
-var version
-// Gets URL encoding version 
-// and extracts values based on that version
 function reverse(url) {
-    // Get and Substract version
-    // [url, _id] = url.split('===')
-    // mcastUrl = "https://demo.httprelay.io/mcast/" + _id
-    version = parseInt(url.charAt(url.length - 1))
-    url = url.substring(0, url.length - 2)
-    // Implement incremental versions
-    var url_
-    switch (version) {
-        case 0:
-            url_ = atob(url.substring(1))
-            return url_.split(",")
-        case 1:
-            url_ = atobVerified(url.substring(1))
-            return url_.split(",")
-        case 2:
-            url_ = atobVerified(url.substring(1))
-            return url_.split(",")
-        case 3:
-            url_ = atobVerified(url.substring(1))
-            return url_.split(",")
-        case 4:
-            order = url.substring(url.length - 5)
-            url = url.substring(0, url.length - 5)
-            url_ = atobVerified(url.substring(1))
-            return url_.split(",")
-        default:
-            break;
-    }
+    order = url.substring(url.length - 5);
+    console.log(order);
+    url = url.substring(0, url.length - 5);
+    console.log(url);
+    var url_ = atobVerified(url.substring(1))
+    return url_.split(",")
 }
 
 var bugous = false
@@ -100,25 +75,22 @@ window.addEventListener('DOMContentLoaded', e => {
     langChange(defaultLang);
 });
 
-// Make decrypt button event listener
-// version 4: password possible !
-if (version >= 3) {
-    const btn = document.getElementById("decrypt-button")
-    btn.addEventListener("click", function() {
-        var password = prompt("This social card seems encrypted. Enter in the key!") || "";
-        if (password.length < 4 || password.length > 8) {
-            bugous = true;
-        } else {
-            for (socialArray of dataArray) {
-                if (socialArray[2]) {
-                    socialArray[2] = XORCipher.decode(password, socialArray[2]);
-                }
+// Decrypt button event listener
+const btn = document.getElementById("decrypt-button")
+btn.addEventListener("click", function() {
+    var password = prompt("This social card seems encrypted. Enter in the key!") || "";
+    if (password.length < 4 || password.length > 8) {
+        bugous = true;
+    } else {
+        for (socialArray of dataArray) {
+            if (socialArray[2]) {
+                socialArray[2] = XORCipher.decode(password, socialArray[2]);
             }
-            document.getElementsByClassName('form1')[0].innerHTML = '';
-            inputSubmittedData(dataArray);
         }
-    });
-}
+        document.getElementsByClassName('form1')[0].innerHTML = '';
+        inputSubmittedData(dataArray);
+    }
+});
 
 var submittedSocials = 0
 function inputSubmittedData(dataArray) {

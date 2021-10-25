@@ -18,34 +18,12 @@ function atobVerified(s) {
         return ""
 }
 
-var version
-
-// Gets URL encoding version 
-// and extracts values based on that version
+var order = "00000"
 function reverse(url) {
-    // Get and Substract version
-    // [url, _id] = url.split('===')
-    // mcastUrl = "https://demo.httprelay.io/mcast/" + _id
-    version = parseInt(url.charAt(url.length - 1))
-    url = url.substring(0, url.length - 2)
-    // Implement incremental versions
-    var url_
-    switch (version) {
-        case 0:
-            url_ = atob(url.substring(1))
-            return url_.split(",")
-        case 1:
-            url_ = atobVerified(url.substring(1))
-            return url_.split(",")
-        case 2:
-            url_ = atobVerified(url.substring(1))
-            return url_.split(",")
-        case 3:
-            url_ = atobVerified(url.substring(1))
-            return url_.split(",")
-        default:
-            break;
-    }
+    order = url.substring(url.length - 5);
+    url = url.substring(0, url.length - 5);
+    var url_ = atobVerified(url.substring(1))
+    return url_.split(",")
 }
 
 var bugous = false
@@ -56,8 +34,27 @@ if (typeof(vals) === 'undefined' || vals.length === 1) {
     bugous = true
 }
 
-var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
+function createDataArray() {
+    var keys = ["user", "instagram", "youtube", "facebook", "twitter", "snapchat", "envelope", "phone"]
+    const dataArray = []
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i] == 'user') {
+        dataArray.push([0, keys[i], vals[i]])
+    } else if (keys[i] == 'envelope') {
+        dataArray.push([keys.length - 2, keys[i], vals[i]])
+    } else if (keys[i] == 'phone') {
+        dataArray.push([keys.length - 1, keys[i], vals[i]])
+    } else {
+        var socialOrder = parseInt(order[i - 1]);
+        dataArray.push([socialOrder, keys[i], vals[socialOrder]]); 
+    }
+  }
+  return dataArray
+}
+
 const form = document.querySelector('.form1');
+var dataArray = createDataArray();
+dataArray.sort();
 
 let _isMobile = false
 // device detection
@@ -76,85 +73,55 @@ window.addEventListener('DOMContentLoaded', e => {
     langChange(defaultLang);
 });
 
-function updateSocials() {
-    var skippedSocials = 0
-    keys.forEach(function (key, i) {
-        if (vals[i] != '') {
-            if (key === "envelope") {
-                document.getElementById("mail-id").remove();
-                form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`);
-                return
+// Decrypt button event listener
+const btn = document.getElementById("decrypt-button")
+btn.addEventListener("click", function() {
+    var password = prompt("This social card seems encrypted. Enter in the key!") || "";
+    if (password.length < 4 || password.length > 8) {
+        bugous = true;
+    } else {
+        for (socialArray of dataArray) {
+            if (socialArray[2]) {
+                socialArray[2] = XORCipher.decode(password, socialArray[2]);
             }
-            if (key === "phone") {
-                document.getElementById("phone-id").remove();
-                form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
-                return
-            }
-            if (key === "user") {
-                document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] });
-            }
-            var y = document.getElementsByClassName("input-field")[i - skippedSocials];
-            y.value = vals[i];
-            } else {
-              skippedSocials += 1;
-            }
-      })
-}
-
-// Make decrypt button event listener
-// version 4: password possible !
-if (version === 3) {
-    const btn = document.getElementById("decrypt-button")
-    btn.addEventListener("click", function() {
-        var password = prompt("This social card seems encrypted. Enter in the key!") || "";
-        if (password.length < 4 || password.length > 8) {
-            bugous = true;
-        } else {
-            vals = vals.map((val) => {
-                if(val)
-                    return XORCipher.decode(password, val)
-                else
-                    return val
-            });
-          updateSocials();
         }
-    });
-}
+        document.getElementsByClassName('form1')[0].innerHTML = '';
+        inputSubmittedData(dataArray);
+    }
+});
 
 var submittedSocials = 0
-// Manipulate dom based on values from URL
-keys.forEach(function (key, i) {
-    try {
-        if (vals[i] != '') {
-          submittedSocials += 1
-          if (key === "envelope") {
-              form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${vals[i]}">${vals[i]}</a></div>`)
-              return
-          }
-          if (key === "phone") {
-              form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${vals[i]}">${vals[i]}</a></div>`)
-              return
-          }
-          if (key === "user") {
-              document.querySelectorAll('.user').forEach(node => { node.innerHTML = vals[i] })
-          }
-          var x = document.createElement("I");
-          x.setAttribute("class", `fa fa-${key} icon`);
-          form.appendChild(x)
+function inputSubmittedData(dataArray) {
+    for (socialArray of dataArray) {
+        var key = socialArray[1];
+        var value = socialArray[2];
+        if (value != '') {
+            submittedSocials += 1;
+            if (key === "envelope") {
+                form.insertAdjacentHTML('beforeend', `<div id="mail-id"><a href="mailto:${value}">${value}</a></div>`)
+                continue
+            } else if (key === "phone") {
+                form.insertAdjacentHTML('beforeend', `<div id="phone-id"><a href="tel:${value}">${value}</a></div>`)
+                continue
+            } else if (key === "user") {
+                document.querySelectorAll('.user').forEach(node => { node.innerHTML = value })
+            }
+            var x = document.createElement("I");
+            x.setAttribute("class", `fa fa-${key} icon`);
+            form.appendChild(x)
 
-          var y = document.createElement("INPUT");
-          y.setAttribute("name", key);
-          y.setAttribute("class", "input-field");
-          y.setAttribute("value", vals[i]);
-          y.setAttribute("type", "text");
-          y.setAttribute("readonly", "readonly");
-          form.appendChild(y)
+            var y = document.createElement("INPUT");
+            y.setAttribute("name", key);
+            y.setAttribute("class", "input-field");
+            y.setAttribute("value", value);
+            y.setAttribute("type", "text");
+            y.setAttribute("readonly", "readonly");
+            form.appendChild(y)
         }
-
-    } catch (error) {
-        bugous = true
     }
-})
+}
+
+inputSubmittedData(dataArray);
 
 // Values over 7 result in svg images too large for the card
 if (submittedSocials > 7) {

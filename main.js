@@ -72,14 +72,17 @@ function clearPreviousQR() {
     document.querySelector("#link").innerHTML = '';
 }
 
-var order = ""
+var order 
 function getOrder() {
-    order = "";
+    order = [0, 0, 0, 0, 0];
     const socialArray = ["instagram", "youtube", "facebook", "twitter", "snapchat"]
     var socials = document.getElementsByClassName("sortable-input");
+    var i = 1;
     for (var social of socials) {
-        order += socialArray.indexOf(social.name) + 1;
+        order[socialArray.indexOf(social.name)] = i;
+        i += 1;
     }
+    order = order.join('');
 }
 
 function handleDom() {

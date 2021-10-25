@@ -18,19 +18,16 @@ function atobVerified(s) {
         return ""
 }
 
+var order = "00000"
 function reverse(url) {
     order = url.substring(url.length - 5);
-    console.log(order);
     url = url.substring(0, url.length - 5);
-    console.log(url);
     var url_ = atobVerified(url.substring(1))
     return url_.split(",")
 }
 
 var bugous = false
 var url = window.location.href;
-// Default order
-var order = "00000"
 // get part after card.html in link
 var vals = reverse(url.split('card.html')[1]);
 if (typeof(vals) === 'undefined' || vals.length === 1) {
@@ -48,7 +45,7 @@ function createDataArray() {
     } else if (keys[i] == 'phone') {
         dataArray.push([keys.length - 1, keys[i], vals[i]])
     } else {
-        var socialOrder = order[i - 1];
+        var socialOrder = parseInt(order[i - 1]);
         dataArray.push([socialOrder, keys[i], vals[socialOrder]]); 
     }
   }

@@ -25,6 +25,15 @@
     <script type="text/javascript" src='print.min.js' async></script>
     <script type="text/javascript" src="share-buttons.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+          $( "#sortable" ).sortable({
+            placeholder: "ui-state-highlight"
+          });
+          $( "#sortable" ).disableSelection();
+        });
+    </script>
 </head>
 
 <body>
@@ -114,21 +123,33 @@
                     <i class="fa fa-user icon"></i>
                     <input class="input-field" placeholder="my-alias *" name="user" type="text" pattern=".{6,30}"
                         title="6 to 20 characters" required>
-                    <i class="fa fa-instagram icon"></i>
-                    <input class="input-field" placeholder="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
-                        title="6 to 20 characters">
-                    <i class="fa fa-youtube icon"></i>
-                    <input class="input-field" placeholder="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
-                        title="6 to 20 characters">
-                    <i class="fa fa-facebook icon"></i>
-                    <input class="input-field" placeholder="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
-                        title="6 to 20 characters">
-                    <i class="fa fa-twitter icon"></i>
-                    <input class="input-field" placeholder="twatter" name="twitter" type="text" pattern=".{6,30}|^$"
-                        title="6 to 20 characters">
-                    <i class="fa fa-snapchat icon"></i>
-                    <input class="input-field" placeholder="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$"
-                        title="6 to 20 characters">
+                    <ul id="sortable">
+                      <li>
+                        <i class="fa fa-instagram icon"></i>
+                        <input class="input-field" placeholder="sinsta" name="instagram" type="text" pattern=".{6,30}|^$"
+                            title="6 to 20 characters">
+                      </li>
+                      <li>
+                        <i class="fa fa-youtube icon"></i>
+                        <input class="input-field" placeholder="utoob" name="youtube" type="text" pattern=".{6,30}|^$"
+                            title="6 to 20 characters">
+                      </li>
+                      <li>
+                        <i class="fa fa-facebook icon"></i>
+                        <input class="input-field" placeholder="wtf-acebook" name="facebook" type="text" pattern=".{6,30}|^$"
+                            title="6 to 20 characters">
+                      </li>
+                      <li>
+                        <i class="fa fa-twitter icon"></i>
+                        <input class="input-field" placeholder="twatter" name="twitter" type="text" pattern=".{6,30}|^$"
+                            title="6 to 20 characters">
+                      </li>
+                      <li>
+                        <i class="fa fa-snapchat icon"></i>
+                        <input class="input-field" placeholder="snatchchat" name="snapchat" type="text" pattern=".{6,30}|^$"
+                            title="6 to 20 characters">
+                      </li>
+                    </ul>
                     <i class="fa fa-envelope icon"></i>
                     <input class="input-field" placeholder="gemail" name="envelope" type="email" pattern=".{6,30}|^$"
                         title="non conforming email: __@__.__">

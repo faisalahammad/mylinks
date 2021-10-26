@@ -30,7 +30,20 @@ td[lang="ar"] {
 
 @media (prefers-color-scheme: light) {
   body {
-      background: #c7c7c6 !important;
+    background: #c7c7c6;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  #sortable .fa-snapchat,
+  #sortable .fa-twitter {
+    color: var(--background);
+  }
+
+  input[name="snapchat"]::placeholder,
+  input[name="twitter"]::placeholder {
+    color: var(--background);
   }
 }
 
@@ -66,7 +79,10 @@ td[lang="ar"] {
 .input-field {
   text-indent: 45px;
   line-height: 125%;
-  color: #dbdbdb;
+}
+
+.input-field::placeholder {
+  color: var(--text-main);
 }
 
 .input-field:disabled:hover {
@@ -74,27 +90,22 @@ td[lang="ar"] {
 }
 
 input[name="instagram"] {
-  color: #dbdbdb;
   background-color: #C13584;
 }
 
 input[name="youtube"] {
-  color: #dbdbdb;
   background-color: #FF0000;
 }
 
 input[name="facebook"] {
-  color: #dbdbdb;
   background-color: #4267B2;
 }
 
 input[name="twitter"] {
-  color: #dbdbdb;
   background-color: #1DA1F2;
 }
 
 input[name="snapchat"] {
-  color: #797979;
   background-color: #FEFC00;
 }
 
@@ -117,8 +128,7 @@ th img {
   margin: auto;
 }
 
-.share-btn > a {
-  border: 1px solid #ccc;
+.share-btn>a {
   padding: 5px;
   font-size: 12px;
   font-family: Verdana, Arial;
@@ -163,6 +173,10 @@ select {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
+}
+
+footer {
+  color: var(--text-main);
 }
 
 /* Chrome 29+ */

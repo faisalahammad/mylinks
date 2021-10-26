@@ -63,8 +63,9 @@ if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elain
     _isMobile = true
 }
 // Language selector.
-function langChange(el) {
-    document.documentElement.setAttribute('lang', el.value);
+function langChange(el) {// check for right to left formating
+    if (el.value === 'ar') {document.dir="rtl"}else {document.dir="ltr"}
+    Stone.setLocale(el.value);
 }
 
 window.addEventListener('DOMContentLoaded', e => {
@@ -173,6 +174,9 @@ function generateSvg() {
 }
 document.body.hidden = false;
 
+Stone.enableDomScan(true);
+
+Stone.addCatalogs(stoneJsCatalogs);
 
 // var _id;
 // var mcastUrl;

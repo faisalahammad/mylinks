@@ -55,7 +55,9 @@ form.addEventListener('keyup', handleFormKeyStrokes);
 form.addEventListener('submit', handleFormSubmit);
 // Language selector.
 function langChange(el) {
-    document.documentElement.setAttribute('lang', el.value);
+    // check for right to left formating
+    if (el.value === 'ar') {document.dir="rtl"}else {document.dir="ltr"}
+    Stone.setLocale(el.value);
 }
 
 window.addEventListener('DOMContentLoaded', e => {
@@ -148,6 +150,10 @@ function differForConn() {
 }
 var _id;
 var mcastUrl;
+
+Stone.enableDomScan(true);
+
+Stone.addCatalogs(stoneJsCatalogs);
 
 // $.ajaxSetup({ xhrFields: { withCredentials: true } });	// For cookies with SeqId
 

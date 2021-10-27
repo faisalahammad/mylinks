@@ -40,6 +40,12 @@ td[lang="ar"] {
   margin: 0;
 }
 
+.ui-sortable-handle {
+  background: rgba(215, 171, 38, 0.19);
+  border-radius: 0.4rem;
+  cursor: grab;
+}
+
 .ui-state-highlight {
   height: 3rem;
   line-height: 3rem;
@@ -90,6 +96,7 @@ input[name="twitter"] {
 
 input[name="snapchat"] {
   background-color: #FEFC00;
+  color: black;
 }
 
 form input[type=text]::placeholder{

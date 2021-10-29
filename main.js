@@ -1,3 +1,6 @@
+const progressbar = document.querySelector(".progress");
+const error = document.querySelector(".error");
+
 String.prototype.hashCode = function () {
     var hash = 0, i, chr;
     if (this.length === 0) return hash;
@@ -33,7 +36,7 @@ function codify(formJSON) {
 }
 
 var formData
-var limit = 200;
+var limit = 300;
 // Manipulate dom on key strokes
 function handleFormKeyStrokes() {
     formData = new FormData(document.querySelector('.form1'));
@@ -106,8 +109,16 @@ function handleDom() {
     if (document.getElementById("qrcode").innerHTML != '') {
       clearPreviousQR();
     }
-    new QRCode(document.getElementById("qrcode"), encodedString);
-    var canvas = document.getElementById('qrcode').querySelector('canvas');
+    var canvas = document.getElementById('qrcode');
+    QRCode.toCanvas(canvas, encodedString, function (error) {
+        if (error) {
+            error.innerHTML = "Internal text!";
+            console.error(error)
+            return;
+        }
+        console.log('success!');
+    })
+    
     dataURL = canvas.toDataURL();
     var a = document.createElement('a');
     var linkText = document.createTextNode("Share my link");
@@ -125,8 +136,7 @@ const printAsPDF = () => {
     printJS({ printable: dataURL, type: 'image', header: `QR code of ${form.children[0].children[0][0].value}` })
 }
 
-const progressbar = document.querySelector(".progress");
-const error = document.querySelector(".error");
+
 const changeProgress = (progress) => {
     progressbar.style.width = `${progress}%`;
     if (progress > 100) {

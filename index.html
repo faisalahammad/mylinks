@@ -20,7 +20,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='style/main.css'>
     <link rel="stylesheet" crossorigin="anonymous"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="libs/qrcode.min.js" async></script>
+    <script type="text/javascript" src="libs/qrcode2.min.js" async></script>
     <script type="text/javascript" src='libs/print.min.js' async></script>
     <script type="text/javascript" src="libs/share-buttons.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -138,7 +138,8 @@
         <h3 stonejs>Here's where you get your QR code and link.</h3>
         <p><small stonejs>Just share it with your friends! On phones, you can <i>long press</i> on it then share.</small></p>
         <br>
-        <div id="qrcode"></div>
+        <!-- <div id="qrcode"></div> -->
+        <canvas id="qrcode"></canvas>
         <p><small stonejs>Or share the generated link</small></p>
         <div id="link"></div>
         <br>

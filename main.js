@@ -106,7 +106,7 @@ function handleDom() {
     // console.log(hotLink)
 
     // const simpleURL = new URLSearchParams(formJSON).toString()
-    if (document.getElementById("qrcode").innerHTML != '') {
+    if (document.querySelector("#link").innerHTML != '') {
       clearPreviousQR();
     }
     var canvas = document.getElementById('qrcode');

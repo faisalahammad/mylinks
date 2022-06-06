@@ -17,10 +17,10 @@ Although I note that the last version (3) is the one 100% server-less (no URL lo
 
 ## Example
 
-A link is like this:
+A QR is like this:
 
-https://so-c.me/card.html#bXktYWxpYXMsc2ludmZkc3RhLHV0b3ZmZG9iLHd0Zi1hY2Vib29rLHR3YXR0ZXIsc25hdGNoY2hhdCxnZW1haWxAZ21haWwuY29tLDA3Nzg2ODA4Mjc=@-1977975060%2
+![canvas](https://user-images.githubusercontent.com/10267332/172229979-337e1c28-8bc3-4bcb-8a2f-d344b16cf0e4.png)
 
+For the following link:
 
-Check [this card](https://so-c.me/card.html#bXktYWxpYXMsc2ludmZkc3RhLHV0b3ZmZG9iLHd0Zi1hY2Vib29rLHR3YXR0ZXIsc25hdGNoY2hhdCxnZW1haWxAZ21haWwuY29tLDA3Nzg2ODA4Mjc=@-1977975060%2)
- to see the corresponding QR-Code and social card online. Know that the card is deciphered from the Link only, no session, no db, no information rests in server.
+https://bacloud22.github.io/so-cards//card.html#YmFubm5kZCxmZWFmYWVmZWFmYWUsZmVhZmVhZmVhLGZlYWZlYSxmYWVmZWEsZmFlZmFlLGZmZmZmZmZAZ21haWwuY29tLDA3Nzg2ODA4Mjc=@-149376113912345

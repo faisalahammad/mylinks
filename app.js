@@ -1,6 +1,6 @@
 if (navigator.serviceWorker) {
   navigator.serviceWorker
-    .register("/sw.js", {
+    .register("sw.js", {
       scope:'.'
     })
     .then((res) => {

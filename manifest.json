@@ -1,6 +1,7 @@
 {
   "name": "Share Qrcode",
   "short_name": "ShareQrcode",
+  "id": "/index.html",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#FFE9D2",

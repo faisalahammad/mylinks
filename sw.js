@@ -17,7 +17,7 @@ const asset = [
   "/libs/particles.min.js",
   "/libs/print.min.js",
   "/libs/qrcode2.min.js",
-  "/libs/share-buttons.js",
+  "/libs/sharer.min.js",
   "/libs/stoneJSCatalog.js",
   "/libs/stretchy.min.js",
   "/libs/XORCipher.js",

@@ -2,7 +2,7 @@ let stoneJsCatalogs = {
     "fr": {
         "plural-forms": "nplurals=2; plural=(n > 1);",
         "messages": {
-            "Social cards on so-c.me": ["Cartes des médias sociaux"],
+            "Social cards on mylinks.space": ["Cartes des médias sociaux"],
             "Some details can't hurt!": ["Certains détails ne font pas demal!"],
             "Disclaimers": ["Non-responsabilité "],
             "This website does not collect \"any\" data whatsoever. Try going offline and it works. If you are tech savvy, check your browser's developer console.": [`Ce site Web ne collecte «aucune» donnée. Essayez de
@@ -20,7 +20,7 @@ let stoneJsCatalogs = {
             "Here's where you get your QR code and link.": ["Ici, vous obtenez votre code QR et votre lien."],
             "Just share it with your friends! On phones, you can <i>long press</i> on it then share.": ["Partagez-le simplement avec vos amis! Sur les téléphones, vous pouvez <i> appuyer longuement </i> dessus puis partager."],
             "Or share the generated link": ["Ou partagez le lien généré"],
-            "Help spread \"so-c.me\" in your circles 🙂": ["Aidez à diffuser \"so-c.me\" dans vos cercles 🙂"],
+            "Help spread \"mylinks.space\" in your circles 🙂": ["Aidez à diffuser \"mylinks.space\" dans vos cercles 🙂"],
             "If you like my work 💪 You can help me stay motivated 🍓 :": ["Si vous aimez mon travail 💪 Vous pouvez m'aider à rester motivé 🍓 :"],
             "Social Card of": ["La Carte des réseaux sociaux de"],
             "Given a password? Then...": ["Vous avez un mot de passe? alors..."],
@@ -30,7 +30,7 @@ let stoneJsCatalogs = {
     "ar": {
         "plural-forms": "nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);",
         "messages": {
-            "Social cards on so-c.me": ["بطاقات التواصل الاجتماعي"],
+            "Social cards on mylinks.space": ["بطاقات التواصل الاجتماعي"],
             "Some details can't hurt!": ["بعض التفاصيل"],
             "Disclaimers": ["إخلاء المسؤولية "],
             "This website does not collect \"any\" data whatsoever. Try going offline and it works. If you are tech savvy, check your browser's developer console.":[`هذا الموقع لا يجمع "أي" بيانات على الإطلاق.
@@ -51,7 +51,7 @@ let stoneJsCatalogs = {
             "Just share it with your friends! On phones, you can <i>long press</i> on it then share.": [`فقط شاركها مع الأصدقاء! على الهواتف ، يمكنك <i> الضغط لفترة طويلة </i> عليه ثم
             المشاركة.`],
             "Or share the generated link": ["أو مشاركة الرابط الذي تم إنشاؤه"],
-            "Help spread \"so-c.me\" in your circles 🙂": [" ساعد في نشر \"so-c.me\" في دوائرك🙂 "],
+            "Help spread \"mylinks.space\" in your circles 🙂": [" ساعد في نشر \"mylinks.space\" في دوائرك🙂 "],
             "If you like my work 💪 You can help me stay motivated 🍓 :": ["إذا أعجبك عملي 💪 يمكنك مساعدتي في البقاء متحمسًا 🍓:"],
             "Social Card of": ["البطاقة الاجتماعية ل"],
             "Given a password? Then...": ["هل أعطيت كلمة سر؟ قم بفك التشفير..."],
@@ -61,7 +61,7 @@ let stoneJsCatalogs = {
     "ru": {
         "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);",
         "messages": {
-            "Social cards on so-c.me": ["Карточки соц. сетей на so-c.me"],
+            "Social cards on mylinks.space": ["Карточки соц. сетей на mylinks.space"],
             "Some details can't hurt!": ["Некоторые детали не повредят!"],
             "Disclaimers": ["Дисклеймер"],
             "This website does not collect \"any\" data whatsoever. Try going offline and it works. If you are tech savvy, check your browser's developer console.": [`Этот сайт не собирает \"какие-либо\" данные. Попробуйте выйти в оффлайн режим, и он работает. Если вы технически подкованы, проверьте консоль разработчика своего браузера.`],
@@ -75,7 +75,7 @@ let stoneJsCatalogs = {
             "Here's where you get your QR code and link.": ["Здесь вы можете получить свой QR-код и ссылку."],
             "Just share it with your friends! On phones, you can <i>long press</i> on it then share.": ["Просто поделись с друзьями! На телефонах вы можете <i>нажать и удерживать</i>, а затем поделиться."],
             "Or share the generated link": ["Или поделитесь сгенерированной ссылкой"],
-            "Help spread \"so-c.me\" in your circles 🙂": ["Помогите распространить \"so-c.me\" в ваших кругах 🙂"],
+            "Help spread \"mylinks.space\" in your circles 🙂": ["Помогите распространить \"mylinks.space\" в ваших кругах 🙂"],
             "If you like my work 💪 You can help me stay motivated 🍓 :": ["Если Вам понравилась моя работа 💪 Вы можете помочь мне сохранить мотивацию 🍓 :"],
             "Social Card of": ["Карточка социальных сетей"],
             "Given a password? Then...": ["Есть пароль? Тогда..."],

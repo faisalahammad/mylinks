@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com ;
-            script-src 'self' 'unsafe-inline' https://unpkg.com https://ajax.googleapis.com;
+            script-src 'self' 'unsafe-inline' https://unpkg.com https://ajax.googleapis.com https://app-worker.visitor-analytics.io;
             object-src 'self';
             style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
             img-src 'self' data: https://img.icons8.com https://cdnjs.cloudflare.com;" />
@@ -219,12 +219,13 @@
     | <a href="mailto:contact@mylinks.space"><span>Email</span></a>
     <!-- | <a href='https://github.com/bacloud14/so-cards'>Contribute</a> -->
   </footer>
+
+  <script type="text/javascript" src="./app.js"></script>
+  <script type="text/javascript" src="libs/stonejs.min.js"></script>
+  <script type="text/javascript" src="libs/stoneJSCatalog.js"></script>
+  <script type="text/javascript" src="libs/XORCipher.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script>(function(v,i,s,a,t){v[t]=v[t]||function(){(v[t].v=v[t].v||[]).push(arguments)};if(!v._visaSettings){v._visaSettings={}}v._visaSettings[a]={v:'1.0',s:a,a:'1',t:t};var b=i.getElementsByTagName('body')[0];var p=i.createElement('script');p.defer=1;p.async=1;p.src=s+'?s='+a;b.appendChild(p)})(window,document,'//app-worker.visitor-analytics.io/main.js','bbcc3f12-4478-11ed-b589-901b0edac50a','va')</script>
 </body>
-<script type="text/javascript" src="./app.js"></script>
-</script>
-<script type="text/javascript" src="libs/stonejs.min.js"></script>
-<script type="text/javascript" src="libs/stoneJSCatalog.js"></script>
-<script type="text/javascript" src="libs/XORCipher.js"></script>
-<script type="text/javascript" src="main.js"></script>
-<script>(function(v,i,s,a,t){v[t]=v[t]||function(){(v[t].v=v[t].v||[]).push(arguments)};if(!v._visaSettings){v._visaSettings={}}v._visaSettings[a]={v:'1.0',s:a,a:'1',t:t};var b=i.getElementsByTagName('body')[0];var p=i.createElement('script');p.defer=1;p.async=1;p.src=s+'?s='+a;b.appendChild(p)})(window,document,'//app-worker.visitor-analytics.io/main.js','bbcc3f12-4478-11ed-b589-901b0edac50a','va')</script>
+
 </html>

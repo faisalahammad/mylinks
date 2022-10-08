@@ -1,6 +1,6 @@
 {
-  "name": "Share Qrcode",
-  "short_name": "ShareQrcode",
+  "name": "My links space",
+  "short_name": "MyLinks",
   "id": "/index.html",
   "start_url": "/index.html",
   "display": "standalone",

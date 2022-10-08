@@ -125,11 +125,24 @@ function handleDom() {
     a.appendChild(linkText);
     a.title = "My link";
     a.href = encodedString;
+    var b = document.createElement('button');
+    var shareText = document.createTextNode("Share my QR on Facebook");
+    // <button class="button" data-sharer="buffer" data-via="ellisonleao" data-picture="https://ellisonleao.github.io/sharer.js/img/socialbg.png" data-title="Sharer.js is the ultimate sharer js lib" data-url="https://ellisonleao.github.io/sharer.js/">Share on Buffer</button>
+    b.setAttribute('class', 'button');
+    b.setAttribute('data-sharer', 'facebook');
+    b.setAttribute('data-picture', dataURL);
+    b.setAttribute('data-via', 'data-via');
+    b.setAttribute('data-id', 'fb');
+    b.setAttribute('data-title', 'Check my links');
+    b.appendChild(shareText);
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.png' href='" + dataURL + "'>Download QR code</a> | ");
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<a style='cursor:pointer' onClick='printAsPDF()'>Print As PDF</a> | ");
     document.querySelector('#link').appendChild(a);
+    
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
+    document.querySelector('#link').appendChild(b);
     document.getElementById('qrcode').scrollIntoView();
+    window.Sharer.init();
 }
 
 const printAsPDF = () => {

@@ -29,7 +29,7 @@ function codify(formJSON) {
     var envPath = window.location.href;
     // localhost includes index.html but not on web server
     // so remove it from path on localhost environment
-    if(envPath.indexOf('file:///') === 0) {
+    if (envPath.indexOf('file:///') === 0) {
         envPath = envPath.split('/index.html')[0]
     }
     return `${envPath}/card.html#` + btoaVerified(shortestString) + order
@@ -59,7 +59,7 @@ form.addEventListener('submit', handleFormSubmit);
 // Language selector.
 function langChange(el) {
     // check for right to left formating
-    if (el.value === 'ar') {document.dir="rtl"}else {document.dir="ltr"}
+    if (el.value === 'ar') { document.dir = "rtl" } else { document.dir = "ltr" }
     Stone.setLocale(el.value);
 }
 
@@ -83,10 +83,15 @@ function clearPreviousQR() {
     document.querySelector("#link").innerHTML = '';
 }
 
-var order 
+var order
+// Used to for default fields
+const socialArray = ["instagram", "youtube", "facebook", "twitter", "snapchat"]
+// Used to share QR or main page
+const socialArray2 = ['vk', 'facebook', 'twitter', 'telegram', 'skype', 'whatsapp', 'mail']
+
 function getOrder() {
     order = [0, 0, 0, 0, 0];
-    const socialArray = ["instagram", "youtube", "facebook", "twitter", "snapchat"]
+
     var socials = document.getElementsByClassName("sortable-input");
     var i = 1;
     for (var social of socials) {
@@ -101,13 +106,10 @@ function handleDom() {
     const formJSON = Object.fromEntries(formData.entries());
     const encodedString = codify(formJSON)
     _id = (Math.random().toString(36).substr(4))
-    // mcastUrl = "https://demo.httprelay.io/mcast/" + _id
-    // const hotLink = encodedString + '===' + _id
-    // console.log(hotLink)
 
     // const simpleURL = new URLSearchParams(formJSON).toString()
     if (document.querySelector("#link").innerHTML != '') {
-      clearPreviousQR();
+        clearPreviousQR();
     }
     var canvas = document.getElementById('qrcode');
     QRCode.toCanvas(canvas, encodedString, function (error) {
@@ -118,29 +120,33 @@ function handleDom() {
         }
         console.log('success!');
     })
-    
+
     dataURL = canvas.toDataURL();
     var a = document.createElement('a');
     var linkText = document.createTextNode("Share my link");
     a.appendChild(linkText);
     a.title = "My link";
     a.href = encodedString;
-    var b = document.createElement('button');
-    var shareText = document.createTextNode("Share my QR on Facebook");
-    // <button class="button" data-sharer="buffer" data-via="ellisonleao" data-picture="https://ellisonleao.github.io/sharer.js/img/socialbg.png" data-title="Sharer.js is the ultimate sharer js lib" data-url="https://ellisonleao.github.io/sharer.js/">Share on Buffer</button>
-    b.setAttribute('class', 'button');
-    b.setAttribute('data-sharer', 'facebook');
-    b.setAttribute('data-picture', dataURL);
-    b.setAttribute('data-via', 'data-via');
-    b.setAttribute('data-id', 'fb');
-    b.setAttribute('data-title', 'Check my links');
-    b.appendChild(shareText);
+
+
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><a download='my_qr_code.png' href='" + dataURL + "'>Download QR code</a> | ");
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<a style='cursor:pointer' onClick='printAsPDF()'>Print As PDF</a> | ");
     document.querySelector('#link').appendChild(a);
-    
+
     document.querySelector('#link').insertAdjacentHTML('beforeend', "<br><div style='display:flex'><input type='text' value='" + encodedString + "' id='to_copy' readonly><i class='fa fa-copy icon' onclick='copyLink()'></i></div>");
-    document.querySelector('#link').appendChild(b);
+    for (const sharer of socialArray2) {
+        var b = document.createElement('a');
+        var shareText = `<i class="fa fa-${sharer}"></i>&nbsp;${sharer}&nbsp;&nbsp;`;
+        // <button class="button" data-sharer="buffer" data-via="ellisonleao" data-picture="https://ellisonleao.github.io/sharer.js/img/socialbg.png" data-title="Sharer.js is the ultimate sharer js lib" data-url="https://ellisonleao.github.io/sharer.js/">Share on Buffer</button>
+        // b.setAttribute('class', `btn-${sharer}`);
+        b.setAttribute('data-sharer', sharer);
+        b.setAttribute('data-picture', dataURL);
+        b.setAttribute('data-via', 'data-via');
+        b.setAttribute('data-id', sharer);
+        b.setAttribute('data-title', 'Check my links');
+        b.innerHTML = shareText;
+        document.querySelector('#link').appendChild(b);
+    }
     document.getElementById('qrcode').scrollIntoView();
     window.Sharer.init();
 }
@@ -172,47 +178,7 @@ function differForConn() {
         }, 1000);
 }
 var _id;
-var mcastUrl;
 
 Stone.enableDomScan(true);
 
 Stone.addCatalogs(stoneJsCatalogs);
-
-// $.ajaxSetup({ xhrFields: { withCredentials: true } });	// For cookies with SeqId
-
-// var receive = function () {
-//     $.get(mcastUrl)
-//         .done(function (data) {
-//             console.log(data);
-//         }).always(function () {
-//             receive();
-//         })
-// }
-// async function subscribe() {
-//     let response = await fetch(mcastUrl);
-//     if (response.status == 502) {
-//         // Status 502 is a connection timeout error,
-//         // may happen when the connection was pending for too long,
-//         // and the remote server or a proxy closed it
-//         // let's reconnect
-//         await new Promise(resolve => setTimeout(resolve, 10000));
-//         await subscribe();
-//     } else if (response.status != 200) {
-//         // An error - let's show it
-//         console.log(response.statusText);
-//         // Reconnect in one second
-//         await new Promise(resolve => setTimeout(resolve, 10000));
-//         await subscribe();
-//     } else {
-//         // Get and show the message
-//         let message = await response.text();
-//         console.log(message);
-//         // Call subscribe() again to get the next message
-//         await new Promise(resolve => setTimeout(resolve, 10000));
-//         await subscribe();
-//     }
-// }
-
-
-
-// receive();

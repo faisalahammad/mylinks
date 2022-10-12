@@ -1,4 +1,4 @@
-# so-cards
+# MyLinks
 
 A serverless social cards sharing web app 
 
@@ -19,8 +19,8 @@ Although I note that the last version (3) is the one 100% server-less (no URL lo
 
 A QR is like this:
 
-![canvas](https://user-images.githubusercontent.com/10267332/172229979-337e1c28-8bc3-4bcb-8a2f-d344b16cf0e4.png)
+![canvas](qr_example.png)
 
 For the following link:
 
-https://bacloud22.github.io/so-cards//card.html#YmFubm5kZCxmZWFmYWVmZWFmYWUsZmVhZmVhZmVhLGZlYWZlYSxmYWVmZWEsZmFlZmFlLGZmZmZmZmZAZ21haWwuY29tLDA3Nzg2ODA4Mjc=@-149376113912345
+https://mylinks.space//card.html#YmFjbG91ZDIzLG15R2FyZGVuaW5nU2luc3RhZ3JhbSxJaGF2QVlvdUJlZVRvb2IsLGNoZWNrTXlUd2F0dGVyLCxmZmZmZmZmQGdtYWlsLmNvbSwwODg4ODg4ODg4@-86657709212345

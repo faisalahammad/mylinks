@@ -81,5 +81,29 @@ let stoneJsCatalogs = {
             "Given a password? Then...": ["Есть пароль? Тогда..."],
             "Make your own card": ["Сделайте свою собственную карточку"]
         }
+    },
+    "it": {
+        "plural-forms": "nplurals=2; plural=(n > 1);",
+        "messages": {
+            "Social cards on mylinks.space": ["Scheda Social su mylinks.space"],
+            "Some details can't hurt!": ["Qualche dettaglio non farebbe male!"],
+            "Disclaimers": ["Scarico di responsabilità "],
+            "This website does not collect \"any\" data whatsoever. Try going offline and it works. If you are tech savvy, check your browser's developer console.": [`Questo sito Web non raccoglie «nessun» dato. Prova a staccare la connessione e funzionerà lo stesso. Se sei un* smanetton*, controlla la console di sviluppo del tuo browser `],
+            "It is completely free too. It does not show advertisements and will not do so in the future. You can still help me stay motivated by donating via Paypal.":[`Questo sito è anche 100% gratuito. Non mostra pubblicità e non lo farà neanche in futuro. Puoi comunque aiutarmi a mantenere la motivazione donando via Paypal. `],
+            "You can encrypt your card with a key that you would share only with your confidants!": ["Puoi crittografare la tua scheda con una chiave che potrai condividere solamente con i tuoi amici intimi!"],
+            "We take no responsibility for usernames or links that you claim are yours and we don't do any verification.": ["Decliniamo ogni responsabilità per username o link che dichiarate come vostri e non facciamo nessuna verifica. "],
+            "Fill in your Social Card": ["Remplissez votre carte des réseaux sociaux"],
+            "All are optional except \"alias\" - Drag the Social Media site links into the order you want and this will be reflected on your card.": ["Tous sont facultatifs sauf \"le surnom\""],
+            "Get QR code": ["Ottieni il QR code"],
+            "(*): required <br>(⌥): optional": ["(*): obbligatorio <br>(⌥): opzionale"],
+            "Here's where you get your QR code and link.": ["Ecco dove ottenere il tuo QR code e link."],
+            "Just share it with your friends! On phones, you can <i>long press</i> on it then share.": ["Condividilo con i tuoi amici! Da cellulare, puoi <i>premerci a lungo sopra</i> e poi condividerlo."],
+            "Or share the generated link": ["Oppure condividi il link generato"],
+            "Help spread \"mylinks.space\" in your circles 🙂": ["Aiuta a condividere \"mylinks.space\" nei tuoi gruppi 🙂"],
+            "If you like my work 💪 You can help me stay motivated 🍓 :": ["Se ti piace il mio lavoro 💪 puoi aiutarmi a mantenere la motivazione 🍓 :"],
+            "Social Card of": ["Scheda Social di"],
+            "Given a password? Then...": ["Hai una password? Allora..."],
+            "Make your own card": ["Crea la tua scheda"]
+        }
     }
 }

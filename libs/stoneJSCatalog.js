@@ -3,7 +3,7 @@ let stoneJsCatalogs = {
         "plural-forms": "nplurals=2; plural=(n > 1);",
         "messages": {
             "Social cards on mylinks.space": ["Cartes des médias sociaux"],
-            "Some details can't hurt!": ["Certains détails ne font pas demal!"],
+            "Some details can't hurt!": ["Certains détails ne font pas de mal!"],
             "Disclaimers": ["Non-responsabilité "],
             "This website does not collect \"any\" data whatsoever. Try going offline and it works. If you are tech savvy, check your browser's developer console.": [`Ce site Web ne collecte «aucune» donnée. Essayez de
             vous déconnecter et ceci fonctionne. Si vous êtes un(e) geek(ette), vérifiez la console

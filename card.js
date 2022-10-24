@@ -20,6 +20,7 @@ function atobVerified(s) {
 
 var order = "00000"
 function reverse(url) {
+    if(!url) url = ''
     order = url.substring(url.length - 5);
     url = url.substring(0, url.length - 5);
     var url_ = atobVerified(url.substring(1))
